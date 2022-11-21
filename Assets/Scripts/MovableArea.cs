@@ -13,6 +13,16 @@ namespace SF
 
         #endregion
 
+        public float GetRandomAvailableX(float radius)
+        {
+            var camera = Camera.main;
+            if (camera == null)
+                return 0;
+
+            var halfWidth = camera.orthographicSize * camera.aspect - _HorizontalPaddings - radius;
+            return Random.Range(-halfWidth, halfWidth);
+        }
+
         public float GetConfinedX(float x, float radius)
         {
             var camera = Camera.main;
