@@ -43,7 +43,7 @@ namespace SF
             }
         }
 
-        private void FixedUpdate()
+        void FixedUpdate()
         {
             if (_isAlive)
             {
@@ -55,7 +55,7 @@ namespace SF
                     xShift *= _MouseInputXScaler;
                 }
 
-                var newPosition = _rigidBody.position + Vector2.down * _Speed * Time.deltaTime + Vector2.right * xShift;
+                var newPosition = _rigidBody.position + _Speed * Time.deltaTime * Vector2.down + Vector2.right * xShift;
 
                 newPosition.x = _MovableArea.GetConfinedX(newPosition.x, _collider.radius * transform.localScale.x);
 

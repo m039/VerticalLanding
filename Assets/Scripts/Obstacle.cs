@@ -6,10 +6,11 @@ namespace SF
     {
         #region Inspector
 
-        public float radius = 1f;
+        [SerializeField]
+        float _Radius = 1f;
 
         #endregion
 
-        public float Radius => transform.localScale.x * radius;
+        public float Radius => transform.localScale.x * _Radius;
     }
 }

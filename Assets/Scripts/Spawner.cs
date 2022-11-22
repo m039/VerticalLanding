@@ -27,7 +27,7 @@ namespace SF
 
             p.z = 0;
 
-            obstacle.transform.position = p + Vector3.down * camera.orthographicSize * 2 + _MovableArea.GetRandomAvailableX(obstacle.Radius) * Vector3.right;
+            obstacle.transform.position = p + Vector3.down * (camera.orthographicSize + obstacle.Radius) + _MovableArea.GetRandomAvailableX(obstacle.Radius) * Vector3.right;
         }
     }
 }
