@@ -24,16 +24,33 @@ namespace SF
 
         SpriteRenderer _fireRenderer;
 
+        Collider2D _foot1;
+
+        Collider2D _foot2;
+
+        Collider2D _body;
+
         bool _alive;
 
         Vector2 _initPosition;
+
+        ContactFilter2D _endPlatformCF;
+
+        bool _freezeControls;
 
         private void Awake()
         {
             _rigidBody = GetComponent<Rigidbody2D>();
             _fireRenderer = transform.Find("Fire").GetComponent<SpriteRenderer>();
+            _foot1 = transform.Find("Foot1").GetComponent<Collider2D>();
+            _foot2 = transform.Find("Foot2").GetComponent<Collider2D>();
+            _body = transform.Find("Body").GetComponent<Collider2D>();
+
             _alive = true;
             _initPosition = transform.position;
+            _endPlatformCF.useLayerMask = true;
+            _endPlatformCF.layerMask = Consts.EndPlatformLayerMask;
+            _freezeControls = false;
         }
 
         void Start()
@@ -55,6 +72,7 @@ namespace SF
                 _rigidBody.velocity = new Vector2(0, 0);
                 _rigidBody.angularVelocity = 0;
                 _alive = true;
+                _freezeControls = false;
                 HideMainLabel();
             }
         }
@@ -62,11 +80,12 @@ namespace SF
         void FixedUpdate()
         {
             HandleMovementInput();
+            CheckCollisions();
         }
 
         void HandleMovementInput()
         {
-            if (!_alive)
+            if (!_alive || _freezeControls)
                 return;
 
             // Up arrow key.
@@ -99,14 +118,69 @@ namespace SF
             }
         }
 
-        const string LoseKey = "lose";
+        static readonly List<Collider2D> _sColliderBuffer = new(16);
 
-        const string WinKey = "win";
+        const float HighSpeedThreshold = 1.2f;
+
+        void CheckCollisions()
+        {
+            if (!_alive)
+                return;
+
+            bool isFootOnPlatform(Collider2D foot)
+            {
+                var count = Physics2D.OverlapCollider(foot, _endPlatformCF, _sColliderBuffer);
+                for (int i = 0; i < count; i++)
+                {
+                    var collider = _sColliderBuffer[i];
+                    if (collider.GetComponent<EndPlatformCollider>() != null)
+                        return true;
+                }
+
+                return false;
+            }
+
+            bool isSpeedHigh()
+            {
+                return _rigidBody.velocity.magnitude > HighSpeedThreshold;
+            }
+
+            bool isBodyTouchingPlatform()
+            {
+                var count = Physics2D.OverlapCollider(_body, _endPlatformCF, _sColliderBuffer);
+                for (int i = 0; i < count; i++)
+                {
+                    var collider = _sColliderBuffer[i];
+                    if (collider.GetComponent<EndPlatformCollider>() != null)
+                        return true;
+                }
+
+                return false;
+            }
+
+            var foot1OnPlatform = isFootOnPlatform(_foot1);
+            var foot2OnPlatform = isFootOnPlatform(_foot2);
+
+            if (isBodyTouchingPlatform() ||
+                (isSpeedHigh() && (foot1OnPlatform || foot2OnPlatform)))
+            {
+                ShowMainLabel(LoseKey);
+                _alive = false;
+            } else if (foot1OnPlatform && foot2OnPlatform)
+            {
+                ShowMainLabel(WinKey);
+                _freezeControls = true;
+            }
+        }
 
         void HideMainLabel()
         {
             mainLabel.gameObject.SetActive(false);
         }
+
+        const string LoseKey = "lose";
+
+        const string WinKey = "win";
 
         void ShowMainLabel(string key)
         {
