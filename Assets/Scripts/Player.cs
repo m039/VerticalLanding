@@ -190,7 +190,9 @@ namespace SF
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision != null && collision.GetComponent<OffscreenCollider>() != null)
+            if (collision != null &&
+                (collision.GetComponent<OffscreenCollider>() != null ||
+                collision.GetComponent<ObstacleCollider>()))
             {
                 var alive = false;
                 if (_alive != alive)
