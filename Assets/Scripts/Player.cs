@@ -53,6 +53,7 @@ namespace SF
                 _rigidBody.position = _initPosition;
                 _rigidBody.rotation = 0;
                 _rigidBody.velocity = new Vector2(0, 0);
+                _rigidBody.angularVelocity = 0;
                 _alive = true;
                 HideMainLabel();
             }
