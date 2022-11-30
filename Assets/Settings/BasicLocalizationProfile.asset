@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 280c384fb098fec48b19dd2f088d66be, type: 3}
+  m_Name: BasicLocalizationProfile
+  m_EditorClassIdentifier: 
+  defaultLanguage: {fileID: 2860243989106666138}
+  languages:
+  - {fileID: 4335363787502728690}
+  - {fileID: 2860243989106666138}
+  languageSelectors:
+  - rid: 6462873968284270595
+  - rid: 6462873968284270592
+  - rid: 6462873968284270593
+  - rid: 6462873968284270594
+  translations:
+  - key: lose
+    phrases:
+    - language: {fileID: 4335363787502728690}
+      text: 
+    - language: {fileID: 2860243989106666138}
+      text: "\u0412\u044B \u043F\u0440\u043E\u0438\u0433\u0440\u0430\u043B\u0438"
+    guid: 982b07d3-015c-4673-a7c6-9b1d020e3984
+  - key: win
+    phrases:
+    - language: {fileID: 4335363787502728690}
+      text: 
+    - language: {fileID: 2860243989106666138}
+      text: "\u0423\u0440\u043E\u0432\u0435\u043D\u044C \u043F\u0440\u043E\u0439\u0434\u0435\u043D"
+    guid: 8ca4b9c4-e2c7-4777-8b77-dec6bef8ad3d
+  mainAsset: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 6462873968284270592
+      type: {class: CommandLineLanguageSelector, ns: m039.BasicLocalization, asm: BasicLocalization}
+      data:
+        commandLineArguments: -language=
+    - rid: 6462873968284270593
+      type: {class: PlayerPrefLanguageSelector, ns: m039.BasicLocalization, asm: BasicLocalization}
+    - rid: 6462873968284270594
+      type: {class: SystemLanguageSelector, ns: m039.BasicLocalization, asm: BasicLocalization}
+    - rid: 6462873968284270595
+      type: {class: DefaultLanguageSelector, ns: m039.BasicLocalization, asm: BasicLocalization}
+--- !u!114 &2860243989106666138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf275c55add28c04fad349b4b61ab7c9, type: 3}
+  m_Name: New Language
+  m_EditorClassIdentifier: 
+  languageId: Russian
+  locale: {fileID: 11400000, guid: 6e5d895ac27a14249851005136d1ec6c, type: 2}
+--- !u!114 &4335363787502728690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf275c55add28c04fad349b4b61ab7c9, type: 3}
+  m_Name: New Language
+  m_EditorClassIdentifier: 
+  languageId: English
+  locale: {fileID: 11400000, guid: c433c8f61ce59dd47a35bf39b9ae9b92, type: 2}

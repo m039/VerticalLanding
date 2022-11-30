@@ -1,5 +1,14 @@
 {
   "dependencies": {
+    "com.m039.basic-localization": {
+      "version": "https://github.com/m039/BasicLocalization.git#v0.2.1",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.textmeshpro": "3.0.6"
+      },
+      "hash": "f6bb8bb218b641d1b20bd096f40ee88c566192d9"
+    },
     "com.unity.2d.animation": {
       "version": "7.0.5",
       "depth": 1,
