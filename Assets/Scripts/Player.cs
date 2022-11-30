@@ -92,11 +92,11 @@ namespace SF
             if (Keyboard.current.upArrowKey.isPressed)
             {
                 _rigidBody.AddForce(transform.up * upForce * Time.deltaTime, ForceMode2D.Force);
-                _fireRenderer.sprite = fireBig;
+                StartFlame();
             }
             else
             {
-                _fireRenderer.sprite = null;
+                StopFlame();
             }
 
             // Left and right arrow keys.
@@ -116,6 +116,16 @@ namespace SF
             {
                 _rigidBody.MoveRotation(_rigidBody.rotation + rotationDirection * rotationSpeed * Time.deltaTime);
             }
+        }
+
+        void StartFlame()
+        {
+            _fireRenderer.sprite = fireBig;
+        }
+
+        void StopFlame()
+        {
+            _fireRenderer.sprite = null;
         }
 
         static readonly List<Collider2D> _sColliderBuffer = new(16);
@@ -165,17 +175,13 @@ namespace SF
                 (isSpeedHigh() && (foot1OnPlatform || foot2OnPlatform)))
             {
                 ShowMainLabel(LoseKey);
+                StopFlame();
                 _alive = false;
             } else if (foot1OnPlatform && foot2OnPlatform)
             {
                 ShowMainLabel(WinKey);
                 _freezeControls = true;
             }
-        }
-
-        void HideMainLabel()
-        {
-            mainLabel.gameObject.SetActive(false);
         }
 
         const string LoseKey = "lose";
@@ -188,18 +194,29 @@ namespace SF
             mainLabel.text = BasicLocalization.GetTranslation(key);
         }
 
-        private void OnTriggerEnter2D(Collider2D collision)
+        void HideMainLabel()
         {
-            if (collision != null &&
-                (collision.GetComponent<OffscreenCollider>() != null ||
-                collision.GetComponent<ObstacleCollider>()))
+            mainLabel.gameObject.SetActive(false);
+        }
+
+        void OnTriggerEnter2D(Collider2D collider)
+        {
+            if (collider.GetComponent<OffscreenCollider>() != null ||
+                collider.GetComponent<ObstacleCollider>())
             {
-                var alive = false;
-                if (_alive != alive)
-                {
-                    ShowMainLabel(LoseKey);
-                }
-                _alive = alive;
+                ShowMainLabel(LoseKey);
+                StopFlame();
+                _alive = false;
+            }
+        }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.collider.GetComponent<ObstacleCollider>() != null)
+            {
+                ShowMainLabel(LoseKey);
+                StopFlame();
+                _alive = false;
             }
         }
     }
