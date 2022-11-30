@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace SF
+namespace SF01
 {
     public class Obstacle : MonoBehaviour
     {

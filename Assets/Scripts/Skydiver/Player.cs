@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace SF
+namespace SF01
 {
     public class Player : MonoBehaviour
     {

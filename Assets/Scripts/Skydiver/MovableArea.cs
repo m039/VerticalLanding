@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace SF
+namespace SF01
 {
     public class MovableArea : MonoBehaviour
     {
