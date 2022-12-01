@@ -69,13 +69,14 @@ namespace SF
         {
             if (Keyboard.current.rKey.wasPressedThisFrame)
             {
+                transform.position = _initPosition;
                 _rigidBody.position = _initPosition;
                 _rigidBody.rotation = 0;
                 _rigidBody.velocity = new Vector2(0, 0);
                 _rigidBody.angularVelocity = 0;
                 _alive = true;
                 _freezeControls = false;
-                cameraController.Freez = false;
+                cameraController.DoReset();
                 HideMainLabel();
             }
         }
