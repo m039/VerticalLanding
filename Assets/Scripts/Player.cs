@@ -18,6 +18,8 @@ namespace SF
 
         public TMPro.TMP_Text mainLabel;
 
+        public CameraController cameraController;
+
         #endregion
 
         Rigidbody2D _rigidBody;
@@ -73,6 +75,7 @@ namespace SF
                 _rigidBody.angularVelocity = 0;
                 _alive = true;
                 _freezeControls = false;
+                cameraController.Freez = false;
                 HideMainLabel();
             }
         }
@@ -174,13 +177,10 @@ namespace SF
             if (isBodyTouchingPlatform() ||
                 (isSpeedHigh() && (foot1OnPlatform || foot2OnPlatform)))
             {
-                ShowMainLabel(LoseKey);
-                StopFlame();
-                _alive = false;
+                LoseLevel();
             } else if (foot1OnPlatform && foot2OnPlatform)
             {
-                ShowMainLabel(WinKey);
-                _freezeControls = true;
+                CompleteLevel();
             }
         }
 
@@ -199,14 +199,27 @@ namespace SF
             mainLabel.gameObject.SetActive(false);
         }
 
+        void CompleteLevel()
+        {
+            ShowMainLabel(WinKey);
+            _freezeControls = true;
+        }
+
+        void LoseLevel()
+        {
+            ShowMainLabel(LoseKey);
+            StopFlame();
+            _alive = false;
+
+            cameraController.Freez = true;
+        }
+
         void OnTriggerEnter2D(Collider2D collider)
         {
             if (collider.GetComponent<OffscreenCollider>() != null ||
                 collider.GetComponent<ObstacleCollider>())
             {
-                ShowMainLabel(LoseKey);
-                StopFlame();
-                _alive = false;
+                LoseLevel();
             }
         }
 
@@ -214,9 +227,7 @@ namespace SF
         {
             if (collision.collider.GetComponent<ObstacleCollider>() != null)
             {
-                ShowMainLabel(LoseKey);
-                StopFlame();
-                _alive = false;
+                LoseLevel();
             }
         }
     }
