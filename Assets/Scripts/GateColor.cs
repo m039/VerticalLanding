@@ -10,7 +10,7 @@ namespace SF
 {
     public enum GateColor
     {
-        Red, Green, Yellow
+        Red, Green, Yellow, White
     }
 
     public static class GateColorExtensions
@@ -25,6 +25,7 @@ namespace SF
                     return GateColorData.Instance.green;
                 case GateColor.Yellow:
                     return GateColorData.Instance.yellow;
+                case GateColor.White:
                 default:
                     return Color.white;
             }

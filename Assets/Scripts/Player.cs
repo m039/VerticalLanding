@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using m039.BasicLocalization;
+using m039.Common;
 
 namespace SF
 {
@@ -42,6 +43,14 @@ namespace SF
 
         bool _freezeControls;
 
+        GateColor _bodyColor;
+
+        PlayerInput _input;
+
+        bool _started;
+
+        float _initGravityScale;
+
         private void Awake()
         {
             _rigidBody = GetComponent<Rigidbody2D>();
@@ -50,38 +59,37 @@ namespace SF
             _foot2 = transform.Find("Foot2").GetComponent<Collider2D>();
             _body = transform.Find("Body").GetComponent<Collider2D>();
             _colorBodyRenderer = transform.Find("ColorBody").GetComponent<SpriteRenderer>();
+            _input = GetComponent<PlayerInput>();
 
-            _alive = true;
             _initPosition = transform.position;
+            _initGravityScale = _rigidBody.gravityScale;
             _endPlatformCF.useLayerMask = true;
             _endPlatformCF.layerMask = Consts.EndPlatformLayerMask;
-            _freezeControls = false;
         }
 
         void Start()
         {
+            mainLabel.gameObject.SetActive(true);
+            mainLabel.enabled = true;
+
+            DoReset();
+        }
+
+        void DoReset()
+        {
+            SetBodyColor(GateColor.White);
+
+            transform.position = _initPosition;
+            _rigidBody.position = _initPosition;
+            _rigidBody.rotation = 0;
+            _rigidBody.velocity = new Vector2(0, 0);
+            _rigidBody.angularVelocity = 0;
+            _rigidBody.gravityScale = 0;
+            _alive = true;
+            _started = false;
+            _freezeControls = false;
+            cameraController.DoReset();
             HideMainLabel();
-        }
-
-        void Update()
-        {
-            HandleInput();
-        }
-
-        void HandleInput()
-        {
-            if (Keyboard.current.rKey.wasPressedThisFrame)
-            {
-                transform.position = _initPosition;
-                _rigidBody.position = _initPosition;
-                _rigidBody.rotation = 0;
-                _rigidBody.velocity = new Vector2(0, 0);
-                _rigidBody.angularVelocity = 0;
-                _alive = true;
-                _freezeControls = false;
-                cameraController.DoReset();
-                HideMainLabel();
-            }
         }
 
         void FixedUpdate()
@@ -96,8 +104,14 @@ namespace SF
                 return;
 
             // Up arrow key.
-            if (Keyboard.current.upArrowKey.isPressed)
+            if (_input.IsUpArrowPressed())
             {
+                if (!_started)
+                {
+                    _rigidBody.gravityScale = _initGravityScale;
+                    _started = true;
+                }
+
                 _rigidBody.AddForce(transform.up * upForce * Time.deltaTime, ForceMode2D.Force);
                 StartFlame();
             }
@@ -109,17 +123,17 @@ namespace SF
             // Left and right arrow keys.
             float rotationDirection = 0f;
 
-            if (Keyboard.current.leftArrowKey.isPressed)
+            if (_input.IsLeftArrowPressed())
             {
                 rotationDirection = 1f;
             }
 
-            if (Keyboard.current.rightArrowKey.isPressed)
+            if (_input.IsRightArrowPressed())
             {
                 rotationDirection = -1f;
             }
 
-            if (rotationDirection != 0)
+            if (rotationDirection != 0 && _started)
             {
                 _rigidBody.MoveRotation(_rigidBody.rotation + rotationDirection * rotationSpeed * Time.deltaTime);
             }
@@ -194,13 +208,13 @@ namespace SF
 
         void ShowMainLabel(string key)
         {
-            mainLabel.gameObject.SetActive(true);
+            mainLabel.color = Color.black;
             mainLabel.text = BasicLocalization.GetTranslation(key);
         }
 
         void HideMainLabel()
         {
-            mainLabel.gameObject.SetActive(false);
+            mainLabel.color = Color.white.WithAlpha(0);
         }
 
         void CompleteLevel()
@@ -216,23 +230,56 @@ namespace SF
             _alive = false;
 
             cameraController.Freez = true;
+
+            IEnumerator reload()
+            {
+                yield return new WaitForSeconds(3f);
+
+                SceneController.Instance.Reload();
+            }
+
+            StartCoroutine(reload());
         }
 
         void OnTriggerEnter2D(Collider2D collider)
         {
+            if (!_alive)
+                return;
+
             if (collider.GetComponent<OffscreenCollider>() != null ||
                 collider.GetComponent<ObstacleCollider>())
             {
                 LoseLevel();
+            } else if (collider.GetComponent<GateCollider>() is GateCollider gate)
+            {
+                SetBodyColor(gate.GetGateColor());
+            } else if (collider.GetComponent<CollectableCollider>() is CollectableCollider collectable)
+            {
+                if (_bodyColor != collectable.GetGateColor())
+                {
+                    LoseLevel();
+                } else
+                {
+                    collectable.GetCollectable().Collect();
+                }
             }
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
+            if (!_alive)
+                return;
+
             if (collision.collider.GetComponent<ObstacleCollider>() != null)
             {
                 LoseLevel();
             }
+        }
+
+        void SetBodyColor(GateColor color)
+        {
+            _bodyColor = color;
+            _colorBodyRenderer.color = color.ToColor();
         }
     }
 }

@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace SF
 {
-    public class PassableGate : MonoBehaviour
+    public class Collectable : MonoBehaviour
     {
         #region Inspector
 
@@ -12,18 +13,18 @@ namespace SF
 
         #endregion
 
-        SpriteRenderer _gate;
+        SpriteRenderer _renderer;
 
-        SpriteRenderer Gate
+        SpriteRenderer Renderer
         {
             get
             {
-                if (_gate == null)
+                if (_renderer == null)
                 {
-                    _gate = transform.Find("Gate")?.GetComponent<SpriteRenderer>();
+                    _renderer = GetComponent<SpriteRenderer>();
                 }
 
-                return _gate;
+                return _renderer;
             }
         }
 
@@ -34,10 +35,15 @@ namespace SF
 
         void UpdateColor()
         {
-            if (Gate == null)
+            if (Renderer == null)
                 return;
 
-            Gate.color = gateColor.ToColor();
+            Renderer.color = gateColor.ToColor();
+        }
+
+        public void Collect()
+        {
+            Destroy(gameObject);
         }
     }
 }

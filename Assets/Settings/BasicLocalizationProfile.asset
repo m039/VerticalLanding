@@ -36,7 +36,28 @@ MonoBehaviour:
     - language: {fileID: 2860243989106666138}
       text: "\u0423\u0440\u043E\u0432\u0435\u043D\u044C \u043F\u0440\u043E\u0439\u0434\u0435\u043D"
     guid: 8ca4b9c4-e2c7-4777-8b77-dec6bef8ad3d
-  mainAsset: 0
+  - key: up_button
+    phrases:
+    - language: {fileID: 4335363787502728690}
+      text: "\t\t"
+    - language: {fileID: 2860243989106666138}
+      text: "\u0412\u0432\u0435\u0440\u0445"
+    guid: 505d9890-ba26-4841-80a1-340e80f89173
+  - key: left_button
+    phrases:
+    - language: {fileID: 4335363787502728690}
+      text: 
+    - language: {fileID: 2860243989106666138}
+      text: "\u0412\u043B\u0435\u0432\u043E"
+    guid: 8615e2a3-6201-4797-841f-31c7a1d2c0b9
+  - key: right_button
+    phrases:
+    - language: {fileID: 4335363787502728690}
+      text: 
+    - language: {fileID: 2860243989106666138}
+      text: "\u0412\u043F\u0440\u0430\u0432\u043E"
+    guid: dcbe8103-cb00-443b-a02c-288311ea3def
+  mainAsset: 1
   references:
     version: 2
     RefIds:

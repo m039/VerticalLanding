@@ -65,3 +65,4 @@ UserSettings/
 *.orig
 *.orig.meta
 /Assets/Editor/GameDebugSettings.asset*
+Misc/
