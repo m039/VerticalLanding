@@ -9,6 +9,14 @@
       },
       "hash": "f6bb8bb218b641d1b20bd096f40ee88c566192d9"
     },
+    "com.m039.common-unity-library": {
+      "version": "file:CommonUnityLibrary",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.unity.textmeshpro": "3.0.6"
+      }
+    },
     "com.unity.2d.animation": {
       "version": "7.0.5",
       "depth": 1,

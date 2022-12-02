@@ -26,6 +26,8 @@ namespace SF
 
         SpriteRenderer _fireRenderer;
 
+        SpriteRenderer _colorBodyRenderer;
+
         Collider2D _foot1;
 
         Collider2D _foot2;
@@ -47,6 +49,7 @@ namespace SF
             _foot1 = transform.Find("Foot1").GetComponent<Collider2D>();
             _foot2 = transform.Find("Foot2").GetComponent<Collider2D>();
             _body = transform.Find("Body").GetComponent<Collider2D>();
+            _colorBodyRenderer = transform.Find("ColorBody").GetComponent<SpriteRenderer>();
 
             _alive = true;
             _initPosition = transform.position;
