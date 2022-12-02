@@ -29,7 +29,15 @@ namespace SF
 
         void OnValidate()
         {
-            
+            UpdateColor();
+        }
+
+        void UpdateColor()
+        {
+            if (Gate == null)
+                return;
+
+            Gate.color = gateColor.ToColor();
         }
 
         // Start is called before the first frame update

@@ -48,7 +48,7 @@ namespace SF
             var colorRect = new Rect(position.x + position.width - width, position.y, width, position.height);
 
             EditorGUI.PropertyField(rect, property, GUIContent.none);
-            m039.Common.GUIHelper.DrawRect(colorRect, ((GateColor)property.intValue).ToColor());;
+            m039.Common.GUIExtensions.DrawRect(colorRect, ((GateColor)property.intValue).ToColor());;
 
             EditorGUI.EndProperty();
         }
