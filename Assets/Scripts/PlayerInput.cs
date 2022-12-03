@@ -19,7 +19,7 @@ namespace SF
 
         void Start()
         {
-            var show = WebGLSupport.IsMobile() || DebugConfig.Instance.showMobileControls;
+            var show = WebGLSupport.IsMobile();
             var buttons = new List<ControlButton>()
                 {
                     leftButton,

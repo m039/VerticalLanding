@@ -9,9 +9,9 @@ namespace SF
     public class DebugConfig : SingletonScriptableObject<DebugConfig>
     {
 #if UNITY_EDITOR
-        public bool showMobileControls = true;
+        public bool isWebGLMobile = true;
 #else
-        public bool showMobileControls => false;
+        public bool isWebGLMobile => false;
 #endif
 
         #region SingletonScriptableObject

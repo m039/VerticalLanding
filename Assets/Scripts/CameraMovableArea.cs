@@ -19,15 +19,16 @@ namespace SF
 
         public BoxCollider2D bottomCollider;
 
+        public MovableArea movableArea;
+
         void Update()
         {
-            if (mainCamera == null)
-                return;
-
-            if (leftCollider == null ||
+            if (mainCamera == null ||
+                leftCollider == null ||
                 topCollider == null ||
                 bottomCollider == null ||
-                rightCollider == null)
+                rightCollider == null ||
+                movableArea == null)
                 return;
 
             var height = mainCamera.orthographicSize * 2;
@@ -42,8 +43,12 @@ namespace SF
             topCollider.size = new Vector2(width, ColliderWidth);
             topCollider.offset = new Vector2(0, height / 2 + topCollider.size.y / 2);
 
+            var startY = mainCamera.transform.position.y - height / 2;
+            var endY = movableArea.BottomY - movableArea.GetBottomOffset();
+            var offset = Mathf.Clamp(endY - startY, 0f, float.MaxValue);
+
             bottomCollider.size = new Vector2(width, ColliderWidth);
-            bottomCollider.offset = new Vector2(0, -height / 2 - bottomCollider.size.y / 2);
+            bottomCollider.offset = new Vector2(0, -height / 2 - bottomCollider.size.y / 2 + offset);
         }
     }
 }

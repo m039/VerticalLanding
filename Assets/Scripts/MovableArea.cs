@@ -14,6 +14,8 @@ namespace SF
 
         [SerializeField] Vector2 _MovableAreaSize = new Vector2(10f * Aspect, 10f);
 
+        [SerializeField] MovableAreaBottomOffset _BottomOffset;
+
         #endregion
 
         public float TopY {
@@ -26,7 +28,26 @@ namespace SF
         {
             get
             {
-                return TopY - _MovableAreaSize.y;
+                return TopY - _MovableAreaSize.y + GetBottomOffset();
+            }
+        }
+
+        public float GetBottomOffset()
+        {
+            if (_BottomOffset != null &&
+                _BottomOffset.gameObject.activeSelf)
+            {
+                return _BottomOffset.GetOffset();
+            }
+
+            return 0f;
+        }
+
+        private void Start()
+        {
+            if (_BottomOffset != null)
+            {
+                _BottomOffset.gameObject.SetActive(WebGLSupport.IsMobile());
             }
         }
 
@@ -70,7 +91,7 @@ namespace SF
             Vector3 GetBottomPosition(MovableArea movableArea)
             {
                 var p = movableArea.transform.position;
-                p.y = movableArea.BottomY;
+                p.y = movableArea.TopY - movableArea._MovableAreaSize.y;
                 return p;
             }
 

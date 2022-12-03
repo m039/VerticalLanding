@@ -112,7 +112,7 @@ namespace SF
                     _started = true;
                 }
 
-                _rigidBody.AddForce(transform.up * upForce * Time.deltaTime, ForceMode2D.Force);
+                _rigidBody.AddForce(Time.deltaTime * upForce * transform.up, ForceMode2D.Force);
                 StartFlame();
             }
             else
