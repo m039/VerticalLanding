@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50bcd4b1119905c46aec033e58ceedc8, type: 3}
   m_Name: DebugConfig
   m_EditorClassIdentifier: 
-  showMobileControls: 0
+  isWebGLMobile: 1

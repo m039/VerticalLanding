@@ -25,7 +25,7 @@ MonoBehaviour:
   - key: lose
     phrases:
     - language: {fileID: 4335363787502728690}
-      text: 
+      text: Game Over
     - language: {fileID: 2860243989106666138}
       text: "\u0412\u044B \u043F\u0440\u043E\u0438\u0433\u0440\u0430\u043B\u0438"
     guid: 982b07d3-015c-4673-a7c6-9b1d020e3984
