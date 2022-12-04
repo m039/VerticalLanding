@@ -86,6 +86,7 @@ namespace SF
         }
     }
 
+
 #if UNITY_EDITOR
     [CustomEditor(typeof(CameraController))]
     public class CameraControllerEditor : Editor

@@ -11,8 +11,9 @@ namespace SF
         {
 #if !UNITY_EDITOR && UNITY_WEBGL
              return isMobile();
-#endif
+#else
             return DebugConfig.Instance.isWebGLMobile;
+#endif
         }
     }
 }
