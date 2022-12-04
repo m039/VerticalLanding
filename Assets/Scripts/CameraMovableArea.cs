@@ -34,14 +34,24 @@ namespace SF
             var height = mainCamera.orthographicSize * 2;
             var width = mainCamera.aspect * height;
 
+            var sideOffset = Mathf.Clamp((width - movableArea.Width) / 2f, 0, float.MaxValue);
+
+            // Left collider.
+
             leftCollider.size = new Vector2(ColliderWidth, height);
-            leftCollider.offset = new Vector2(-width / 2 - leftCollider.size.x / 2, 0);
+            leftCollider.offset = new Vector2(-width / 2 - leftCollider.size.x / 2 + sideOffset, 0);
+
+            // Right collider.
 
             rightCollider.size = new Vector2(ColliderWidth, height);
-            rightCollider.offset = new Vector2(width / 2 + rightCollider.size.x / 2, 0);
+            rightCollider.offset = new Vector2(width / 2 + rightCollider.size.x / 2 - sideOffset, 0);
+
+            // Top collider.
 
             topCollider.size = new Vector2(width, ColliderWidth);
             topCollider.offset = new Vector2(0, height / 2 + topCollider.size.y / 2);
+
+            // Bottom collider.
 
             var startY = mainCamera.transform.position.y - height / 2;
             var endY = movableArea.BottomY - movableArea.GetBottomOffset();

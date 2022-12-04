@@ -18,6 +18,8 @@ namespace SF
 
         #endregion
 
+        public float Width => _MovableAreaSize.x;
+
         public float TopY {
             get {
                 return transform.position.y;

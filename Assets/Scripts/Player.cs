@@ -135,6 +135,7 @@ namespace SF
 
             if (rotationDirection != 0 && _started)
             {
+                _rigidBody.angularVelocity = 0f;
                 _rigidBody.MoveRotation(_rigidBody.rotation + rotationDirection * rotationSpeed * Time.deltaTime);
             }
         }
