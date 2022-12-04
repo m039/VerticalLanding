@@ -51,6 +51,8 @@ namespace SF
 
         float _initGravityScale;
 
+        RocketFlame _flame;
+
         private void Awake()
         {
             _rigidBody = GetComponent<Rigidbody2D>();
@@ -60,6 +62,7 @@ namespace SF
             _body = transform.Find("Body").GetComponent<Collider2D>();
             _colorBodyRenderer = transform.Find("ColorBody").GetComponent<SpriteRenderer>();
             _input = GetComponent<PlayerInput>();
+            _flame = transform.Find("Flame").GetComponent<RocketFlame>();
 
             _initPosition = transform.position;
             _initGravityScale = _rigidBody.gravityScale;
