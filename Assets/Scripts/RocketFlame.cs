@@ -37,6 +37,8 @@ namespace SF
 
         bool _started = false;
 
+        FMODUnity.StudioEventEmitter _audioEvent;
+
         private void OnValidate()
         {
             UpdateVertices();
@@ -46,6 +48,19 @@ namespace SF
         private void Awake()
         {
             CreateMesh();
+
+            _audioEvent = GetComponent<FMODUnity.StudioEventEmitter>();
+            _audioEvent.SetParameter("Volume", 0);
+        }
+
+        private void Start()
+        {
+            _audioEvent.Play();
+        }
+
+        private void OnDestroy()
+        {
+            _audioEvent.Stop();
         }
 
         void UpdateColors()
@@ -177,8 +192,11 @@ namespace SF
                 _height = maxHeight * (1 - flameHeadHeightPercent) +
                     Random.Range(0, maxHeight * flameHeadHeightPercent);
             }
-
+            
             UpdateVertices();
+
+            // Audio.
+            _audioEvent.SetParameter("Volume", _heightStrength);
         }
     }
 }
