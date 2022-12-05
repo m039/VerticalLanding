@@ -15,6 +15,12 @@ namespace SF
 
         public Color flameColor = Color.red;
 
+        public float flameHeadHeightPercent = 0.6f;
+
+        public float flameHeadSpeed = 1f;
+
+        public float flameStrengthSpeed = 4f;
+
         #endregion
 
         Mesh _mesh;
@@ -25,6 +31,11 @@ namespace SF
 
         MeshFilter _meshFilter;
 
+        float _height;
+
+        float _heightStrength;
+
+        bool _started = false;
 
         private void OnValidate()
         {
@@ -51,36 +62,38 @@ namespace SF
             if (!Application.isPlaying || _mesh == null)
                 return;
 
-            InitVertices();
+            InitVertices(_height * Mathf.SmoothStep(0, 1, _heightStrength));
             _mesh.vertices = _vertices;
         }
 
-        void InitVertices()
+        void InitVertices(float height)
         {
+            height = Mathf.Clamp(height, 0, maxHeight);
+
             // Outline.
 
-            var alpha = Mathf.Atan(gap / maxHeight);
+            var alpha = Mathf.Atan(gap / height);
             var cosAlpha = Mathf.Cos(alpha);
-            var z = maxHeight * Mathf.Sqrt(1 - cosAlpha * cosAlpha);
-            var a = outlineWidth / z * maxHeight;
+            var z = height * Mathf.Sqrt(1 - cosAlpha * cosAlpha);
+            var a = outlineWidth / z * height;
             var b = outlineWidth / z * gap;
 
-            if (maxHeight < outlineWidth)
+            if (height < outlineWidth)
             {
                 a = b = 0;
             }
 
             _vertices[0] = new Vector3(gap, 0, 0);
             _vertices[1] = new Vector3(gap + b, 0, 0);
-            _vertices[2] = new Vector3(0, -maxHeight - a, 0);
-            _vertices[3] = new Vector3(0, -maxHeight, 0);
+            _vertices[2] = new Vector3(0, -height - a, 0);
+            _vertices[3] = new Vector3(0, -height, 0);
             _vertices[4] = new Vector3(-gap, 0, 0);
             _vertices[5] = new Vector3(-gap - b, 0, 0);
 
             // Flame.
 
             _vertices[6] = new Vector3(gap, 0, 0);
-            _vertices[7] = new Vector3(0, -maxHeight, 0);
+            _vertices[7] = new Vector3(0, -height, 0);
             _vertices[8] = new Vector3(-gap, 0, 0);
         }
 
@@ -102,7 +115,7 @@ namespace SF
             _mesh = new Mesh();
 
             _vertices = new Vector3[9];
-            InitVertices();
+            InitVertices(0);
 
             _mesh.vertices = _vertices;
 
@@ -139,23 +152,33 @@ namespace SF
 
         public void StartFlame()
         {
-
+            _started = true;
         }
 
         public void StopFlame()
         {
-
+            _started = false;
         }
 
         void Update()
         {
-            if (Keyboard.current.wKey.isPressed)
+            UpdateFlameState();
+        }
+
+        void UpdateFlameState()
+        {
+            _heightStrength += (_started ? 1f : -1f) * Time.deltaTime * flameStrengthSpeed;
+            _heightStrength = Mathf.Clamp01(_heightStrength);
+
+            _height += Time.deltaTime * flameHeadSpeed;
+
+            if (_height >= maxHeight)
             {
-                StartFlame();
-            } else
-            {
-                StopFlame();
+                _height = maxHeight * (1 - flameHeadHeightPercent) +
+                    Random.Range(0, maxHeight * flameHeadHeightPercent);
             }
+
+            UpdateVertices();
         }
     }
 }

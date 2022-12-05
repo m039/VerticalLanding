@@ -15,8 +15,6 @@ namespace SF
 
         public float rotationSpeed;
 
-        public Sprite fireBig;
-
         public TMPro.TMP_Text mainLabel;
 
         public CameraController cameraController;
@@ -24,8 +22,6 @@ namespace SF
         #endregion
 
         Rigidbody2D _rigidBody;
-
-        SpriteRenderer _fireRenderer;
 
         SpriteRenderer _colorBodyRenderer;
 
@@ -56,7 +52,6 @@ namespace SF
         private void Awake()
         {
             _rigidBody = GetComponent<Rigidbody2D>();
-            _fireRenderer = transform.Find("Fire").GetComponent<SpriteRenderer>();
             _foot1 = transform.Find("Foot1").GetComponent<Collider2D>();
             _foot2 = transform.Find("Foot2").GetComponent<Collider2D>();
             _body = transform.Find("Body").GetComponent<Collider2D>();
@@ -145,12 +140,12 @@ namespace SF
 
         void StartFlame()
         {
-            _fireRenderer.sprite = fireBig;
+            _flame.StartFlame();
         }
 
         void StopFlame()
         {
-            _fireRenderer.sprite = null;
+            _flame.StopFlame();
         }
 
         static readonly List<Collider2D> _sColliderBuffer = new(16);
