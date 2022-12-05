@@ -7,5 +7,7 @@ namespace SF
         public const string MenuItemRoot = "SF";
 
         public static readonly LayerMask EndPlatformLayerMask = 1 << 6;
+
+        public const float MaxAspect = 459f / 538f;
     }
 }

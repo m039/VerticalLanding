@@ -16,6 +16,10 @@ namespace SF
 
         public Rect deadzone;
 
+        public CameraMovableArea cameraMovableArea;
+
+        public CameraZoomMovableArea cameraZoomMovableArea;
+
         #endregion
 
         public bool Freez { get; set; }
@@ -26,9 +30,13 @@ namespace SF
 
         Vector3 _currentVelocity;
 
-        private void Awake()
+        void Awake()
         {
             _camera = GetComponent<Camera>();
+        }
+
+        void Start()
+        {
             DoReset();
         }
 
@@ -38,15 +46,17 @@ namespace SF
             _smoothPos = followAt.position;
             _smoothPos.z = transform.position.z;
             Freez = false;
+            cameraZoomMovableArea.Update();
             PositionCamera(true);
+            cameraMovableArea.Update();
         }
 
         void Update()
         {
-            PositionCamera();
+            PositionCamera(false);
         }
 
-        void PositionCamera(bool force = false)
+        void PositionCamera(bool force)
         {
             if (followAt == null ||
                 movableArea == null ||
@@ -65,6 +75,7 @@ namespace SF
 
                 var p = transform.position;
                 p.y = y;
+                _smoothPos.y = y;
                 transform.position = p;
             } else
             {

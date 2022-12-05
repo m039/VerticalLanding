@@ -21,7 +21,7 @@ namespace SF
 
         public MovableArea movableArea;
 
-        void Update()
+        public void Update()
         {
             if (mainCamera == null ||
                 leftCollider == null ||

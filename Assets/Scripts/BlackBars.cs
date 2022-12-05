@@ -5,7 +5,11 @@ namespace SF
     [ExecuteInEditMode]
     public class BlackBars : MonoBehaviour
     {
-        const float Aspect = 1080f / 1920f;
+        #region Inspector
+
+        [SerializeField] Camera _Camera;
+
+        #endregion
 
         RectTransform _leftBar;
 
@@ -17,6 +21,11 @@ namespace SF
             _rightBar = transform.Find("RightBar")?.GetComponent<RectTransform>();
         }
 
+        float GetAspect()
+        {
+            return Mathf.Clamp(_Camera.aspect, 0, Consts.MaxAspect);
+        }
+
         void Update()
         {
             if (_leftBar == null || _rightBar == null)
@@ -25,7 +34,7 @@ namespace SF
             var mainRect = GetComponent<RectTransform>();
             var width = mainRect.sizeDelta.x;
             var height = mainRect.sizeDelta.y;
-            var delta = Mathf.Clamp((width - height * Aspect) / 2, 0, float.MaxValue);
+            var delta = Mathf.Clamp((width - height * GetAspect()) / 2, 0, float.MaxValue);
 
             static void setWidth(RectTransform bar, float width)
             {

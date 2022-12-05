@@ -219,6 +219,7 @@ namespace SF
         void CompleteLevel()
         {
             ShowMainLabel(WinKey);
+            StopFlame();
             _freezeControls = true;
         }
 
