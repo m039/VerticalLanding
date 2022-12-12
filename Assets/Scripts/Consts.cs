@@ -8,6 +8,13 @@ namespace SF
 
         public static readonly LayerMask EndPlatformLayerMask = 1 << 6;
 
-        public const float MaxAspect = 459f / 538f;
+        const float MinAspect = 1080 / 1920f;
+
+        const float MaxAspect = 459f / 538f;
+
+        public static float GetAspect()
+        {
+            return WebGLSupport.IsMobile() ? MaxAspect : MinAspect;
+        }
     }
 }

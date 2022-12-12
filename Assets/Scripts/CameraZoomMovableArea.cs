@@ -27,7 +27,7 @@ namespace SF
             if (_camera == null || _MovableArea == null)
                 return;
 
-            var aspect = Mathf.Clamp(_camera.aspect, 0, Consts.MaxAspect);
+            var aspect = Mathf.Clamp(_camera.aspect, 0, Consts.GetAspect());
 
             _camera.orthographicSize = _MovableArea.Width / (aspect * 2);
         }

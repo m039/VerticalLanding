@@ -23,7 +23,7 @@ namespace SF
 
         float GetAspect()
         {
-            return Mathf.Clamp(_Camera.aspect, 0, Consts.MaxAspect);
+            return Mathf.Clamp(_Camera.aspect, 0, Consts.GetAspect());
         }
 
         void Update()
