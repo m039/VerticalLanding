@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using m039.BasicLocalization;
 using m039.Common;
+using System.Linq;
 
 namespace SF
 {
@@ -29,7 +30,7 @@ namespace SF
 
         Collider2D _foot2;
 
-        Collider2D _body;
+        Collider2D[] _bodyColliders;
 
         bool _alive;
 
@@ -54,16 +55,14 @@ namespace SF
             _rigidBody = GetComponent<Rigidbody2D>();
             _foot1 = transform.Find("Foot1").GetComponent<Collider2D>();
             _foot2 = transform.Find("Foot2").GetComponent<Collider2D>();
-            _body = transform.Find("Body").GetComponent<Collider2D>();
+            _bodyColliders = new[] { "Upper Body", "Lower Body" }
+                .Select(s => transform.Find(s).GetComponent<Collider2D>())
+                .ToArray();
             _input = GetComponent<PlayerInput>();
             _flame = transform.Find("Flame").GetComponent<RocketFlame>();
-            _bodyRenderers = new SpriteRenderer[]
-            {
-                transform.Find("Upper Body").GetComponent<SpriteRenderer>(),
-                transform.Find("Lower Body").GetComponent<SpriteRenderer>(),
-                transform.Find("Foot1").GetComponent<SpriteRenderer>(),
-                transform.Find("Foot2").GetComponent<SpriteRenderer>(),
-            };
+            _bodyRenderers = new[] { "Upper Body", "Lower Body", "Foot1", "Foot2" }
+                .Select(s => transform.Find(s).GetComponent<SpriteRenderer>())
+                .ToArray();
 
             _initPosition = transform.position;
             _initGravityScale = _rigidBody.gravityScale;
@@ -181,9 +180,9 @@ namespace SF
                 return _rigidBody.velocity.magnitude > HighSpeedThreshold;
             }
 
-            bool isBodyTouchingPlatform()
+            bool isBodyTouchingPlatform(Collider2D bodyCollider)
             {
-                var count = Physics2D.OverlapCollider(_body, _endPlatformCF, _sColliderBuffer);
+                var count = Physics2D.OverlapCollider(bodyCollider, _endPlatformCF, _sColliderBuffer);
                 for (int i = 0; i < count; i++)
                 {
                     var collider = _sColliderBuffer[i];
@@ -197,7 +196,7 @@ namespace SF
             var foot1OnPlatform = isFootOnPlatform(_foot1);
             var foot2OnPlatform = isFootOnPlatform(_foot2);
 
-            if (isBodyTouchingPlatform() ||
+            if (_bodyColliders.Any(isBodyTouchingPlatform) ||
                 (isSpeedHigh() && (foot1OnPlatform || foot2OnPlatform)))
             {
                 LoseLevel();
@@ -233,6 +232,7 @@ namespace SF
         {
             ShowMainLabel(LoseKey);
             StopFlame();
+            DestroyCapsule();
             _alive = false;
 
             cameraController.Freez = true;
@@ -245,6 +245,29 @@ namespace SF
             }
 
             StartCoroutine(reload());
+        }
+
+        void DestroyCapsule()
+        {
+            var parts = new[] { "Upper Body", "Lower Body", "Foot1", "Foot2" };
+            var partsMass = new[] { 5, 3, 1, 1 };
+
+            for (int i = 0; i < parts.Length; i++)
+            {
+                var tr = transform.Find(parts[i]);
+                if (tr == null)
+                    continue;
+
+                var rb = tr.gameObject.AddComponent<Rigidbody2D>();
+
+                rb.gravityScale = 0f;
+                rb.mass = partsMass[i];
+                rb.interpolation = RigidbodyInterpolation2D.Interpolate;
+
+                rb.AddForce(5 * (tr.position - transform.position).normalized, ForceMode2D.Impulse);
+            }
+
+            FMODUnity.RuntimeManager.PlayOneShot("event:/CapsuleDestroyed");
         }
 
         void OnTriggerEnter2D(Collider2D collider)

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{659c0af0-48d0-44d5-9650-17c9b8892f07}">
+		<property name="assetPath">
+			<value>343451__greenvwbeetle__boom-1.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>2</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{947d8c63-a401-4831-a26a-70202760f40d}</destination>
+		</relationship>
+	</object>
+</objects>
