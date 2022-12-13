@@ -245,6 +245,7 @@ namespace SF
             }
 
             StartCoroutine(reload());
+            CameraShake.Shake(1f, 0.1f);
         }
 
         void DestroyCapsule()
