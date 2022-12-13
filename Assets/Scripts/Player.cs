@@ -23,7 +23,7 @@ namespace SF
 
         Rigidbody2D _rigidBody;
 
-        SpriteRenderer _colorBodyRenderer;
+        SpriteRenderer[] _bodyRenderers;
 
         Collider2D _foot1;
 
@@ -55,9 +55,15 @@ namespace SF
             _foot1 = transform.Find("Foot1").GetComponent<Collider2D>();
             _foot2 = transform.Find("Foot2").GetComponent<Collider2D>();
             _body = transform.Find("Body").GetComponent<Collider2D>();
-            _colorBodyRenderer = transform.Find("ColorBody").GetComponent<SpriteRenderer>();
             _input = GetComponent<PlayerInput>();
             _flame = transform.Find("Flame").GetComponent<RocketFlame>();
+            _bodyRenderers = new SpriteRenderer[]
+            {
+                transform.Find("Upper Body").GetComponent<SpriteRenderer>(),
+                transform.Find("Lower Body").GetComponent<SpriteRenderer>(),
+                transform.Find("Foot1").GetComponent<SpriteRenderer>(),
+                transform.Find("Foot2").GetComponent<SpriteRenderer>(),
+            };
 
             _initPosition = transform.position;
             _initGravityScale = _rigidBody.gravityScale;
@@ -207,7 +213,7 @@ namespace SF
 
         void ShowMainLabel(string key)
         {
-            mainLabel.color = Color.black;
+            mainLabel.color = Color.white;
             mainLabel.text = BasicLocalization.GetTranslation(key);
         }
 
@@ -279,7 +285,13 @@ namespace SF
         void SetBodyColor(GateColor color)
         {
             _bodyColor = color;
-            _colorBodyRenderer.color = color.ToColor();
+            _bodyRenderers.ForEach(r => r.color = color.ToColor());
+
+            Collectable.CurrentColor = color;
+        }
+
+        public GateColor GetBodyColor() {
+            return _bodyColor;
         }
     }
 }

@@ -21,6 +21,8 @@ namespace SF
 
         public float flameStrengthSpeed = 4f;
 
+        public Color outlineColor = Color.white;
+
         #endregion
 
         Mesh _mesh;
@@ -114,12 +116,12 @@ namespace SF
 
         void InitColors()
         {
-            _colors[0] = Color.black;
-            _colors[1] = Color.black;
-            _colors[2] = Color.black;
-            _colors[3] = Color.black;
-            _colors[4] = Color.black;
-            _colors[5] = Color.black;
+            _colors[0] = outlineColor;
+            _colors[1] = outlineColor;
+            _colors[2] = outlineColor;
+            _colors[3] = outlineColor;
+            _colors[4] = outlineColor;
+            _colors[5] = outlineColor;
             _colors[6] = flameColor;
             _colors[7] = flameColor;
             _colors[8] = flameColor;

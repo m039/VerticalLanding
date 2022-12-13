@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 1cc16a79fd0dcf547ac0cfd1d2c35a31, type: 3}
+    - {fileID: 2800000, guid: 00534e94dd0046942a994eab455adf05, type: 3}
+    - {fileID: 2800000, guid: 2d610156ff440834886d54dfdfacb4c7, type: 3}
+    - {fileID: 2800000, guid: 6c9b62dcb849d81459139989a0f34f75, type: 3}
+    - {fileID: 2800000, guid: 651ecdcd5c5f3b4429b6a31fad442665, type: 3}
+    - {fileID: 2800000, guid: 53ce1a9ad095c0140a47d43cb059c939, type: 3}
+    - {fileID: 2800000, guid: 6b7f3d6370748864d8eda935d01c3c10, type: 3}
+    - {fileID: 2800000, guid: c88203f91a3a21447bed0a47479a1452, type: 3}
+    - {fileID: 2800000, guid: 126b67b5b9c843747bb720949214d86b, type: 3}
+    - {fileID: 2800000, guid: e4142e790faaf934c8b46c35d1914bf8, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 6b7f3d6370748864d8eda935d01c3c10, type: 3}
+  - {fileID: 21300000, guid: 00534e94dd0046942a994eab455adf05, type: 3}
+  - {fileID: 21300000, guid: 126b67b5b9c843747bb720949214d86b, type: 3}
+  - {fileID: 21300000, guid: 2d610156ff440834886d54dfdfacb4c7, type: 3}
+  - {fileID: 21300000, guid: 1cc16a79fd0dcf547ac0cfd1d2c35a31, type: 3}
+  - {fileID: 21300000, guid: e4142e790faaf934c8b46c35d1914bf8, type: 3}
+  - {fileID: 21300000, guid: c88203f91a3a21447bed0a47479a1452, type: 3}
+  - {fileID: 21300000, guid: 53ce1a9ad095c0140a47d43cb059c939, type: 3}
+  - {fileID: 21300000, guid: 6c9b62dcb849d81459139989a0f34f75, type: 3}
+  - {fileID: 21300000, guid: 651ecdcd5c5f3b4429b6a31fad442665, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Capsule Right Leg
+  - Finish Platform
+  - Happy Smile
+  - Inner Circle
+  - Cloud
+  - Capsule Upper Body
+  - Sad Smile
+  - Pill Background
+  - Capsule Left Leg
+  - Capsule Lower Body
+  m_RenderDataMap: {}
+  m_Tag: Atlas
+  m_IsVariant: 0
