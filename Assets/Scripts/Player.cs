@@ -302,7 +302,7 @@ namespace SF
                 collider.GetComponent<ObstacleCollider>())
             {
                 LoseLevel();
-            } else if (collider.GetComponent<GateCollider>() is GateCollider gate)
+            } else if (collider.GetComponent<GateCollider>() is GateCollider gate && gate.Consume())
             {
                 SetBodyColor(gate.GetGateColor());
             } else if (collider.GetComponent<CollectableCollider>() is CollectableCollider collectable)
