@@ -3204,6 +3204,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1117440141745326828, guid: 9aaf9a9c6e1696e4db698a4eb0768753, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2200460383128648060, guid: 9aaf9a9c6e1696e4db698a4eb0768753, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3226532997888161099, guid: 9aaf9a9c6e1696e4db698a4eb0768753, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259583213035677521, guid: 9aaf9a9c6e1696e4db698a4eb0768753, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6411537030538028076, guid: 9aaf9a9c6e1696e4db698a4eb0768753, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -3276,6 +3292,26 @@ PrefabInstance:
       propertyPath: cameraController
       value: 
       objectReference: {fileID: 519420034}
+    - target: {fileID: 7447012092591580063, guid: 9aaf9a9c6e1696e4db698a4eb0768753, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8092019884958729409, guid: 9aaf9a9c6e1696e4db698a4eb0768753, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8092019884958729409, guid: 9aaf9a9c6e1696e4db698a4eb0768753, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8336762872195699137, guid: 9aaf9a9c6e1696e4db698a4eb0768753, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8336762872195699137, guid: 9aaf9a9c6e1696e4db698a4eb0768753, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8424292908372220739, guid: 9aaf9a9c6e1696e4db698a4eb0768753, type: 3}
       propertyPath: flameStrengthSpeed
       value: 6

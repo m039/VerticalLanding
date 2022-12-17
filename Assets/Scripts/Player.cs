@@ -22,6 +22,10 @@ namespace SF
 
         #endregion
 
+        static bool _sDied = false;
+
+        Animator _animator;
+
         Rigidbody2D _rigidBody;
 
         SpriteRenderer[] _bodyRenderers;
@@ -52,15 +56,16 @@ namespace SF
 
         private void Awake()
         {
+            _animator = GetComponent<Animator>();
             _rigidBody = GetComponent<Rigidbody2D>();
-            _foot1 = transform.Find("Foot1").GetComponent<Collider2D>();
-            _foot2 = transform.Find("Foot2").GetComponent<Collider2D>();
-            _bodyColliders = new[] { "Upper Body", "Lower Body" }
+            _foot1 = transform.Find("Renderers/Foot1").GetComponent<Collider2D>();
+            _foot2 = transform.Find("Renderers/Foot2").GetComponent<Collider2D>();
+            _bodyColliders = new[] { "Renderers/Upper Body", "Renderers/Lower Body" }
                 .Select(s => transform.Find(s).GetComponent<Collider2D>())
                 .ToArray();
             _input = GetComponent<PlayerInput>();
-            _flame = transform.Find("Flame").GetComponent<RocketFlame>();
-            _bodyRenderers = new[] { "Upper Body", "Lower Body", "Foot1", "Foot2" }
+            _flame = transform.Find("Renderers/Flame").GetComponent<RocketFlame>();
+            _bodyRenderers = new[] { "Renderers/Upper Body", "Renderers/Lower Body", "Renderers/Foot1", "Renderers/Foot2" }
                 .Select(s => transform.Find(s).GetComponent<SpriteRenderer>())
                 .ToArray();
 
@@ -76,6 +81,16 @@ namespace SF
             mainLabel.enabled = true;
 
             DoReset();
+
+            if (_sDied)
+            {
+                _animator.SetTrigger("AfterDie");
+                _sDied = false;
+            }
+            else
+            {
+                _animator.SetTrigger("Appear");
+            }
         }
 
         void DoReset()
@@ -234,6 +249,7 @@ namespace SF
             StopFlame();
             DestroyCapsule();
             _alive = false;
+            _sDied = true;
 
             cameraController.Freez = true;
 
