@@ -32,19 +32,19 @@ namespace SF
 
         public bool IsUpArrowPressed()
         {
-            return Keyboard.current != null && Keyboard.current.upArrowKey.isPressed ||
+            return Keyboard.current != null && (Keyboard.current.upArrowKey.isPressed || Keyboard.current.wKey.isPressed) ||
                 upButton != null && upButton.isPressed;
         }
 
         public bool IsLeftArrowPressed()
         {
-            return Keyboard.current != null && Keyboard.current.leftArrowKey.isPressed ||
+            return Keyboard.current != null && (Keyboard.current.leftArrowKey.isPressed || Keyboard.current.aKey.isPressed) ||
                 leftButton != null && leftButton.isPressed;
         }
 
         public bool IsRightArrowPressed()
         {
-            return Keyboard.current != null && Keyboard.current.rightArrowKey.isPressed ||
+            return Keyboard.current != null && (Keyboard.current.rightArrowKey.isPressed || Keyboard.current.dKey.isPressed) ||
                 rightButton != null && rightButton.isPressed;
         }
     }
