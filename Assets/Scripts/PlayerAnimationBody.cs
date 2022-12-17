@@ -14,8 +14,6 @@ namespace SF
         [Range(0f, 1f)]
         public float alpha = 1;
 
-        public float yOffset = 0f;
-
         #endregion
 
         SpriteRenderer[] _renderers;

@@ -50,6 +50,8 @@ namespace SF
 
         bool _started;
 
+        bool _levelCompleted;
+
         float _initGravityScale;
 
         RocketFlame _flame;
@@ -105,6 +107,7 @@ namespace SF
             _rigidBody.gravityScale = 0;
             _alive = true;
             _started = false;
+            _levelCompleted = false;
             _freezeControls = false;
             cameraController.DoReset();
             HideMainLabel();
@@ -174,7 +177,7 @@ namespace SF
 
         void CheckCollisions()
         {
-            if (!_alive)
+            if (!_alive || _levelCompleted)
                 return;
 
             bool isFootOnPlatform(Collider2D foot)
@@ -241,6 +244,9 @@ namespace SF
             ShowMainLabel(WinKey);
             StopFlame();
             _freezeControls = true;
+            _levelCompleted = true;
+
+            FMODUnity.RuntimeManager.PlayOneShot("event:/LevelCompleted");
         }
 
         void LoseLevel()
