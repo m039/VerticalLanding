@@ -12,6 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6add9c89591cece44b9483b0c0645e14, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: 
-  color1: {r: 0.8773585, g: 0.3435936, b: 0.30210927, a: 1}
-  color2: {r: 0.30210927, g: 0.8773585, b: 0.47325987, a: 1}
-  color3: {r: 0.9811321, g: 0.96001905, b: 0.42114633, a: 1}
+  plusOnePrefab: {fileID: 5871202278583144909, guid: 2a0eeef28d29f4f4f9b5ada55c7bc7fd, type: 3}

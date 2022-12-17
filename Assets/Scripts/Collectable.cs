@@ -101,6 +101,7 @@ namespace SF
 
         public void Collect()
         {
+            PlusOne.Create(transform.position);
             FMODUnity.RuntimeManager.PlayOneShot("event:/PickUp");
             Destroy(gameObject);
         }

@@ -85,3 +85,4 @@ Misc/
 # Log files can be ignored.
 fmod_editor.log
 FMOD Project/SF/.cache/
+Assets/ThirdParty/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset

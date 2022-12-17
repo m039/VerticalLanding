@@ -11,6 +11,12 @@ namespace SF
 {
     public class GameConfig : SingletonScriptableObject<GameConfig>
     {
+        #region Inspector
+
+        public PlusOne plusOnePrefab;
+
+        #endregion
+
         #region SingletonScriptableObject
 
         protected override bool UseResourceFolder => true;
