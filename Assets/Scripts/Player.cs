@@ -272,7 +272,7 @@ namespace SF
 
         void DestroyCapsule()
         {
-            var parts = new[] { "Upper Body", "Lower Body", "Foot1", "Foot2" };
+            var parts = new[] { "Renderers/Upper Body", "Renderers/Lower Body", "Renderers/Foot1", "Renderers/Foot2" };
             var partsMass = new[] { 5, 3, 1, 1 };
 
             for (int i = 0; i < parts.Length; i++)
