@@ -1,8 +1,9 @@
 using m039.Common;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace SF
 {
@@ -33,6 +34,22 @@ namespace SF
         static void Open()
         {
             Selection.activeObject = AssetDatabase.LoadAssetAtPath<Object>(AssetDatabase.GetAssetPath(Instance));
+        }
+#endif
+
+#if UNITY_EDITOR
+        [CustomEditor(typeof(DebugConfig))]
+        public class DebugConfigEditor : Editor
+        {
+            public override void OnInspectorGUI()
+            {
+                base.OnInspectorGUI();
+
+                if (GUILayout.Button("Delete All Preferences"))
+                {
+                    PlayerPrefs.DeleteAll();
+                }
+            }
         }
 #endif
     }

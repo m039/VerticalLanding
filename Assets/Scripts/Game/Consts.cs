@@ -8,6 +8,8 @@ namespace SF
 
         public static readonly LayerMask EndPlatformLayerMask = 1 << 6;
 
+        public const string MainMenuSceneName = "MainMenu";
+
         const float MinAspect = 1080 / 1920f;
 
         const float MaxAspect = 459f / 538f;

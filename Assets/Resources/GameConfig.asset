@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: GameConfig
   m_EditorClassIdentifier: 
   plusOnePrefab: {fileID: 5871202278583144909, guid: 2a0eeef28d29f4f4f9b5ada55c7bc7fd, type: 3}
+  pauseScreenPrefab: {fileID: 1996962815700665435, guid: 8dacbfaf0456ed244a284bab2d18ebe8, type: 3}

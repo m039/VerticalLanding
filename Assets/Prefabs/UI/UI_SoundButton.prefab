@@ -279,7 +279,9 @@ GameObject:
   - component: {fileID: 1063430700641741481}
   - component: {fileID: 7963339028411082386}
   - component: {fileID: 4740967616444678388}
+  - component: {fileID: 2467800519570729597}
   - component: {fileID: 1201641933154069360}
+  - component: {fileID: 1416159029544600093}
   m_Layer: 5
   m_Name: UI_SoundButton
   m_TagString: Untagged
@@ -390,6 +392,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2467800519570729597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8232400008922409558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 650c11225bbd12949b68039e9c02c29e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1201641933154069360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,3 +416,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91c8ef301552cee438c7978c829e6ce3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1416159029544600093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8232400008922409558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 701ae9bab7b4fdf45996a76ccb0d589d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Transforms:
+  - {fileID: 6855696016333303268}
+  _Offset: -5

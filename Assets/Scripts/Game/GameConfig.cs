@@ -15,6 +15,8 @@ namespace SF
 
         public PlusOne plusOnePrefab;
 
+        public PauseScreen pauseScreenPrefab;
+
         #endregion
 
         #region SingletonScriptableObject
