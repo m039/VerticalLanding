@@ -17,9 +17,11 @@ namespace SF
             if (_gateGroup == null)
                 return true;
 
+            var isConsumed = _gateGroup.IsConsumed;
+
             _gateGroup.Consume();
 
-            return _gateGroup.IsConsumed;
+            return !isConsumed;
         }
 
         public GateColor GetGateColor()

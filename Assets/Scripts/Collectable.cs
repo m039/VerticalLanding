@@ -44,7 +44,7 @@ namespace SF
             }
         }
 
-        private void Awake()
+        void Awake()
         {
             _iconRenderer = transform.Find("Icon").GetComponent<SpriteRenderer>();
             _prevColor = CurrentColor;
@@ -76,6 +76,7 @@ namespace SF
             if (CurrentColor == GateColor.White)
             {
                 _iconRenderer.color = Color.white.WithAlpha(0);
+                _prevColor = GateColor.White;
                 return;
             }
 
