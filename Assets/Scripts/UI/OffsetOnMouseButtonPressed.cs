@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -18,6 +19,18 @@ namespace SF
 
         float[] _initOffsets;
 
+        bool _enabled;
+
+        void OnEnable()
+        {
+            _enabled = true;
+        }
+
+        void OnDisable()
+        {
+            _enabled = false;
+        }
+
         void Awake()
         {
             if (_Transforms == null || _Transforms.Length <= 0)
@@ -32,7 +45,7 @@ namespace SF
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            if (eventData.button == PointerEventData.InputButton.Left)
+            if (eventData.button == PointerEventData.InputButton.Left && _enabled)
             {
                 StartOffset();
             }
@@ -40,7 +53,7 @@ namespace SF
 
         public void OnPointerUp(PointerEventData eventData)
         {
-            if (eventData.button == PointerEventData.InputButton.Left) { 
+            if (eventData.button == PointerEventData.InputButton.Left && _enabled) { 
                 EndOffset();
             }
         }

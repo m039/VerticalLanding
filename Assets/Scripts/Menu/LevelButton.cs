@@ -31,6 +31,8 @@ namespace SF
 
         Button _button;
 
+        OffsetOnMouseButtonPressed _offsetOnMouseButtonPressed;
+
         void Awake()
         {
             _number = transform.Find("LevelGroup/Number").GetComponent<TMPro.TMP_Text>();
@@ -39,6 +41,7 @@ namespace SF
             _levelGroup = transform.Find("LevelGroup");
             _lockGroup = transform.Find("LockGroup");
             _button = GetComponent<Button>();
+            _offsetOnMouseButtonPressed = GetComponent<OffsetOnMouseButtonPressed>();
 
             _button.onClick.AddListener(OnButtonClicked);
         }
@@ -63,14 +66,13 @@ namespace SF
         {
             _levelGroup.gameObject.SetActive(!on);
             _lockGroup.gameObject.SetActive(on);
+            _button.interactable = !on;
+            _offsetOnMouseButtonPressed.enabled = !on;
         }
 
         void OnButtonClicked()
         {
-            if (!_lockGroup.gameObject.activeSelf)
-            {
-                onButtonClicked?.Invoke(this);
-            }
+            onButtonClicked?.Invoke(this);
         }
     }
 }
