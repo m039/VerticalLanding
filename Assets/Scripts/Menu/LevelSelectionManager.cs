@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace SF
 {
@@ -18,7 +19,12 @@ namespace SF
             }
         }
 
-        public int MaxLevels = 15;
+        public int MaxLevels = 22;
+
+        public int FindAvailableLevel()
+        {
+            return 6;
+        }
 
         public bool IsLevelCompleted(int level)
         {
@@ -28,6 +34,11 @@ namespace SF
         public bool IsLevelAvailable(int level)
         {
             return level >= 1 && level <= 6;
+        }
+
+        public void OpenScene(int level)
+        {
+            SceneManager.LoadScene("Level_1");
         }
     }
 }

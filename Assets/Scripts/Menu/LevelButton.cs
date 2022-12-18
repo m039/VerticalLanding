@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace SF
 {
@@ -15,6 +17,8 @@ namespace SF
             return levelButton;
         }
 
+        public System.Action<LevelButton> onButtonClicked;
+
         TMPro.TMP_Text _number;
 
         Transform _checkboxFilled;
@@ -25,33 +29,48 @@ namespace SF
 
         Transform _lockGroup;
 
-        private void Awake()
+        Button _button;
+
+        void Awake()
         {
             _number = transform.Find("LevelGroup/Number").GetComponent<TMPro.TMP_Text>();
             _checkboxFilled = transform.Find("LevelGroup/Checkbox/Filled");
             _checkboxHollowed = transform.Find("LevelGroup/Checkbox/Hollowed");
             _levelGroup = transform.Find("LevelGroup");
             _lockGroup = transform.Find("LockGroup");
+            _button = GetComponent<Button>();
+
+            _button.onClick.AddListener(OnButtonClicked);
+        }
+
+        void OnDestroy()
+        {
+            _button.onClick.RemoveListener(OnButtonClicked);
         }
 
         void Start()
         {
             _number.text = Level.ToString();
-
-            SetCheckbox(LevelSelectionManager.Instance.IsLevelCompleted(Level));
-            ShowLock(!LevelSelectionManager.Instance.IsLevelAvailable(Level));
         }
 
-        void SetCheckbox(bool enabled)
+        public void SetCheckbox(bool enabled)
         {
             _checkboxFilled.gameObject.SetActive(enabled);
             _checkboxHollowed.gameObject.SetActive(!enabled);
         }
 
-        void ShowLock(bool on)
+        public void ShowLock(bool on)
         {
             _levelGroup.gameObject.SetActive(!on);
             _lockGroup.gameObject.SetActive(on);
+        }
+
+        void OnButtonClicked()
+        {
+            if (!_lockGroup.gameObject.activeSelf)
+            {
+                onButtonClicked?.Invoke(this);
+            }
         }
     }
 }
