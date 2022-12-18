@@ -18,26 +18,16 @@ namespace SF
 
         SpriteRenderer[] _renderers;
 
-        SpriteRenderer[] _outlineRenderers;
-
         float _previousAlpha;
 
         void Init(bool force) {
-            if (_renderers == null || _outlineRenderers  == null || force)
+            if (_renderers == null || force)
             {
                 _renderers = new[] {
                     "Renderers/Foot1",
                     "Renderers/Foot2",
                     "Renderers/Upper Body",
                     "Renderers/Lower Body",
-                }
-                .Select(s => transform.Find(s).GetComponent<SpriteRenderer>())
-                .ToArray();
-
-                _outlineRenderers = new[]
-                {
-                    "Renderers/Upper Body/Upper Body Outline",
-                     "Renderers/Lower Body/Lower Body Outline"
                 }
                 .Select(s => transform.Find(s).GetComponent<SpriteRenderer>())
                 .ToArray();
@@ -61,7 +51,6 @@ namespace SF
             if (_previousAlpha != alpha)
             {
                 _renderers.ForEach(r => r.color = r.color.WithAlpha(alpha));
-                _outlineRenderers.ForEach(r => r.enabled = alpha >= 1);
                 _previousAlpha = alpha;
             }
         }

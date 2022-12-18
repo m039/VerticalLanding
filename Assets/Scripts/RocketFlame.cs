@@ -65,6 +65,12 @@ namespace SF
             _audioEvent.Stop();
         }
 
+        public void SetOutlineColor(Color color)
+        {
+            outlineColor = color;
+            UpdateColors();
+        }
+
         void UpdateColors()
         {
             if (!Application.isPlaying || _mesh == null)
