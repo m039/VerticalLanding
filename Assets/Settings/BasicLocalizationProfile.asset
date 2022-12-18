@@ -57,6 +57,35 @@ MonoBehaviour:
     - language: {fileID: 2860243989106666138}
       text: "\u0412\u043F\u0440\u0430\u0432\u043E"
     guid: dcbe8103-cb00-443b-a02c-288311ea3def
+  - key: game_name
+    phrases:
+    - language: {fileID: 4335363787502728690}
+      text: Vertical Landing
+    - language: {fileID: 2860243989106666138}
+      text: "\u0412\u0435\u0440\u0442\u0438\u043A\u0430\u043B\u044C\u043D\u0430\u044F
+        \u043F\u043E\u0441\u0430\u0434\u043A\u0430"
+    guid: 49561459-a5d0-46b4-9bad-b5f1ed66e10f
+  - key: pause_menu_title
+    phrases:
+    - language: {fileID: 4335363787502728690}
+      text: Pause
+    - language: {fileID: 2860243989106666138}
+      text: "\u041F\u0430\u0443\u0437\u0430"
+    guid: 214c2de1-bf48-4177-a4f9-5dd3f5f3ad0e
+  - key: level_fmt
+    phrases:
+    - language: {fileID: 4335363787502728690}
+      text: Level %d
+    - language: {fileID: 2860243989106666138}
+      text: "\u0423\u0440\u043E\u0432\u0435\u043D\u044C %d"
+    guid: 5616a4cd-18c8-463c-bb64-86f8514e3eb6
+  - key: completed
+    phrases:
+    - language: {fileID: 4335363787502728690}
+      text: is completed
+    - language: {fileID: 2860243989106666138}
+      text: "\u043F\u0440\u043E\u0439\u0434\u0435\u043D"
+    guid: dbbba0be-7893-4806-a045-6e335e3372ff
   mainAsset: 1
   references:
     version: 2

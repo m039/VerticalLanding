@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Rocket.unity
+    path: Assets/Scenes/Level_1.unity
     guid: 9eb59f59e44621c4fbff1018ce7568d6
   m_configObjects:
     com.m039.localization.settings: {fileID: 11400000, guid: 2eaaf147c42919a47ba3da6654a5af07, type: 2}
