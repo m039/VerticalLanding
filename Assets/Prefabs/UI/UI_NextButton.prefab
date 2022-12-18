@@ -203,6 +203,8 @@ GameObject:
   - component: {fileID: 7314514189478036843}
   - component: {fileID: 5389231697600848653}
   - component: {fileID: 1994038802624694409}
+  - component: {fileID: 8452510409131898195}
+  - component: {fileID: 4089544942262326872}
   m_Layer: 5
   m_Name: UI_NextButton
   m_TagString: Untagged
@@ -325,3 +327,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91c8ef301552cee438c7978c829e6ce3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8452510409131898195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8736549458468719023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 701ae9bab7b4fdf45996a76ccb0d589d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Transforms:
+  - {fileID: 6829468416191426450}
+  _Offset: -5
+--- !u!114 &4089544942262326872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8736549458468719023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca4e644668ce288479c5c3f3176fbe31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 5389231697600848653}

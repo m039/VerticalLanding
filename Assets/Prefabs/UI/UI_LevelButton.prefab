@@ -316,7 +316,7 @@ GameObject:
   - component: {fileID: 644828952411042909}
   - component: {fileID: 7815820974393214203}
   m_Layer: 5
-  m_Name: Hollow
+  m_Name: Hollowed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -563,9 +563,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2796211039383084176}
   - component: {fileID: 552941658803495738}
+  - component: {fileID: 7083287538810974067}
   - component: {fileID: 7488667814278196993}
   - component: {fileID: 5234640691460655463}
   - component: {fileID: 1856459328720806627}
+  - component: {fileID: 275187602085381029}
   m_Layer: 5
   m_Name: UI_LevelButton
   m_TagString: Untagged
@@ -603,6 +605,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8885950765483402181}
   m_CullTransparentMesh: 1
+--- !u!114 &7083287538810974067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8885950765483402181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44aa69d01c31b2c4dbdb2b56639ccae7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7488667814278196993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -689,3 +703,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91c8ef301552cee438c7978c829e6ce3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &275187602085381029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8885950765483402181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 701ae9bab7b4fdf45996a76ccb0d589d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Transforms:
+  - {fileID: 1222475446532441817}
+  - {fileID: 7572266593618195942}
+  _Offset: -5

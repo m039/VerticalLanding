@@ -14,6 +14,12 @@ namespace SF
         public bool isWebGLMobile => false;
 #endif
 
+#if UNITY_EDITOR
+        public bool showLevelSelectionScreen = true;
+#else
+        public bool showLevelSelectionScreen => false;
+#endif
+
         #region SingletonScriptableObject
 
         protected override bool UseResourceFolder => true;

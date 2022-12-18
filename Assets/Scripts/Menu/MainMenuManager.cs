@@ -34,7 +34,7 @@ namespace SF
                 _LevelSelectionScreen
             };
 
-            ShowScreen(_MainScreen, true);
+            ShowScreen(DebugConfig.Instance.showLevelSelectionScreen? _LevelSelectionScreen : _MainScreen, true);
         }
 
         public void OnPlayClicked()

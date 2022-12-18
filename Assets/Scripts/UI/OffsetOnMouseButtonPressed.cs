@@ -12,7 +12,7 @@ namespace SF
 
         [SerializeField] RectTransform[] _Transforms;
 
-        [SerializeField] float _Offset;
+        [SerializeField] float _Offset = -5f;
 
         #endregion
 

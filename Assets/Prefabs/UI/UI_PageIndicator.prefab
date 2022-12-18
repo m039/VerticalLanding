@@ -161,6 +161,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7486890590055954150}
+  - component: {fileID: 5151556548433012599}
   m_Layer: 5
   m_Name: UI_PageIndicator
   m_TagString: Untagged
@@ -190,3 +191,15 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5151556548433012599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7672906610341707188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa3fe341b56f6984e86e7547c26e78dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
