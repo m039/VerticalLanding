@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isWebGLMobile: 0
   showLevelSelectionScreen: 0
-  allLevelsAvailable: 0
+  allLevelsAvailable: 1

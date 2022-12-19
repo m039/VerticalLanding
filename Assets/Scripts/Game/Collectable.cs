@@ -21,8 +21,6 @@ namespace VL
 
         #endregion
 
-        public static GateColor CurrentColor = GateColor.White;
-
         SpriteRenderer _renderer;
 
         SpriteRenderer _iconRenderer;
@@ -30,6 +28,8 @@ namespace VL
         float _iconAlpha;
 
         GateColor _prevColor;
+
+        public GateColor CurrentColor { get; set; } = GateColor.White;
 
         SpriteRenderer Renderer
         {

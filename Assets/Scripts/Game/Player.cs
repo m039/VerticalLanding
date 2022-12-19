@@ -311,8 +311,6 @@ namespace VL
             _bodyColor = color;
             _bodyRenderers.ForEach(r => r.color = color.ToColor());
             _flame.SetOutlineColor(color.ToColor());
-
-            Collectable.CurrentColor = color;
         }
 
         public GateColor GetBodyColor() {

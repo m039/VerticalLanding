@@ -25,6 +25,7 @@ namespace VL
             if (_sInstance == null)
             {
                 _sInstance = this;
+                gameObject.transform.SetParent(null);
                 DontDestroyOnLoad(gameObject);
                 DoAwake();
             } else

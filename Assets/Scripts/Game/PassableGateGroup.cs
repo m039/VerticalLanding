@@ -15,20 +15,25 @@ namespace VL
 
         PassableGate[] _gates;
 
+        Collectable[] _collectables;
+
         public bool IsConsumed { get; private set; }
 
         void Start()
         {
             _gates = GetComponentsInChildren<PassableGate>();
+            _collectables = GetComponentsInChildren<Collectable>();
             IsConsumed = false;
         }
 
-        public void Consume()
+        public void Consume(PassableGate gate)
         {
             if (IsConsumed)
                 return;
 
             IsConsumed = true;
+
+            // Update gates.
 
             IEnumerator fadeOut(PassableGate gate)
             {
@@ -51,6 +56,10 @@ namespace VL
             }
 
             _gates.ForEach(g => StartCoroutine(fadeOut(g)));
+
+            // Update collectables.
+
+            _collectables.ForEach(c => c.CurrentColor = gate.gateColor);
         }
     }
 }

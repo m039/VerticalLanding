@@ -7,9 +7,12 @@ namespace VL
 
         PassableGateGroup _gateGroup;
 
+        PassableGate _gate;
+
         private void Awake()
         {
             _gateGroup = GetComponentInParent<PassableGateGroup>();
+            _gate = GetComponentInParent<PassableGate>();
         }
 
         public bool Consume()
@@ -19,14 +22,14 @@ namespace VL
 
             var isConsumed = _gateGroup.IsConsumed;
 
-            _gateGroup.Consume();
+            _gateGroup.Consume(_gate);
 
             return !isConsumed;
         }
 
         public GateColor GetGateColor()
         {
-            return transform.parent.GetComponent<PassableGate>().gateColor;
+            return _gate.gateColor;
         }
     }
 }
