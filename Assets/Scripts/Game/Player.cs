@@ -16,8 +16,6 @@ namespace SF
 
         public float rotationSpeed;
 
-        public TMPro.TMP_Text mainLabel;
-
         public CameraController cameraController;
 
         #endregion
@@ -79,9 +77,6 @@ namespace SF
 
         void Start()
         {
-            mainLabel.gameObject.SetActive(true);
-            mainLabel.enabled = true;
-
             DoReset();
 
             if (_sDied)
@@ -110,7 +105,6 @@ namespace SF
             _levelCompleted = false;
             _freezeControls = false;
             cameraController.DoReset();
-            HideMainLabel();
         }
 
         void FixedUpdate()
@@ -224,24 +218,9 @@ namespace SF
             }
         }
 
-        const string LoseKey = "lose";
-
-        const string WinKey = "win";
-
-        void ShowMainLabel(string key)
-        {
-            mainLabel.color = Color.white;
-            mainLabel.text = BasicLocalization.GetTranslation(key);
-        }
-
-        void HideMainLabel()
-        {
-            mainLabel.color = Color.white.WithAlpha(0);
-        }
-
         void CompleteLevel()
         {
-            ShowMainLabel(WinKey);
+            SceneController.Instance.ShowLevelCompletionScreen();
             StopFlame();
             _freezeControls = true;
             _levelCompleted = true;
@@ -251,7 +230,6 @@ namespace SF
 
         void LoseLevel()
         {
-            ShowMainLabel(LoseKey);
             StopFlame();
             DestroyCapsule();
             _alive = false;

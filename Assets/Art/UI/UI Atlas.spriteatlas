@@ -1,0 +1,130 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 1407656827ed09e41bc95ec232fba4fe, type: 3}
+    - {fileID: 2800000, guid: d30c6128777d3bf4691bcd5287eff1d8, type: 3}
+    - {fileID: 2800000, guid: 69ff8e29a6be37045985db7e4d01ab40, type: 3}
+    - {fileID: 2800000, guid: d0c3aebfad08e8849ae45e061805d4b7, type: 3}
+    - {fileID: 2800000, guid: a211417eef208194f9e7fec7e84b7eb6, type: 3}
+    - {fileID: 2800000, guid: ce280011bcacdd14f892b0f30e7fb14f, type: 3}
+    - {fileID: 2800000, guid: 654cff14433f542418a7c7de9f9502bb, type: 3}
+    - {fileID: 2800000, guid: 25a468ede9f8d7d4990cab2c225f3621, type: 3}
+    - {fileID: 2800000, guid: 3353fa76ae830ed4ea46efe866c43f31, type: 3}
+    - {fileID: 2800000, guid: e69677870d3e8b244b596d9e14e60842, type: 3}
+    - {fileID: 2800000, guid: 9b600bd2f7949d344b191416531e9149, type: 3}
+    - {fileID: 2800000, guid: ed93967d8154e3c41992a83c62c235f1, type: 3}
+    - {fileID: 2800000, guid: f0b0f754c551dea4ca50a42554b07eb6, type: 3}
+    - {fileID: 2800000, guid: 0ba3df937869f9341a5f92125f21b74a, type: 3}
+    - {fileID: 2800000, guid: dc1d29b5286ee9e4799fae08b416aa31, type: 3}
+    - {fileID: 2800000, guid: b50f96291e83e564da589137c40ab318, type: 3}
+    - {fileID: 2800000, guid: 53e1eb209f61cfd499a01d904fba9a1e, type: 3}
+    - {fileID: 2800000, guid: dc54741f93bba8d47927f22fe9e18e27, type: 3}
+    - {fileID: 2800000, guid: 5a2e65cf4a828e24a87e61aeeba60012, type: 3}
+    - {fileID: 2800000, guid: f9e939c42befe374e97fc6437d50bea5, type: 3}
+    - {fileID: 2800000, guid: 8625176c4558cf9469b3bf15de48f8fc, type: 3}
+    - {fileID: 2800000, guid: 86308d8ee7cdcde4eafe023387b2f335, type: 3}
+    - {fileID: 2800000, guid: d75c88dd24ee58b42a60c0fb8b5bbe97, type: 3}
+    - {fileID: 2800000, guid: aa099135bb4cd59409653e964dcade7e, type: 3}
+    - {fileID: 2800000, guid: 826a0313915bb934bb2d03ff78eb6f03, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 53e1eb209f61cfd499a01d904fba9a1e, type: 3}
+  - {fileID: 21300000, guid: ce280011bcacdd14f892b0f30e7fb14f, type: 3}
+  - {fileID: 21300000, guid: 9b600bd2f7949d344b191416531e9149, type: 3}
+  - {fileID: 21300000, guid: 826a0313915bb934bb2d03ff78eb6f03, type: 3}
+  - {fileID: 21300000, guid: 0ba3df937869f9341a5f92125f21b74a, type: 3}
+  - {fileID: 21300000, guid: 654cff14433f542418a7c7de9f9502bb, type: 3}
+  - {fileID: 21300000, guid: f0b0f754c551dea4ca50a42554b07eb6, type: 3}
+  - {fileID: 21300000, guid: f9e939c42befe374e97fc6437d50bea5, type: 3}
+  - {fileID: 21300000, guid: aa099135bb4cd59409653e964dcade7e, type: 3}
+  - {fileID: 21300000, guid: dc1d29b5286ee9e4799fae08b416aa31, type: 3}
+  - {fileID: 21300000, guid: 3353fa76ae830ed4ea46efe866c43f31, type: 3}
+  - {fileID: 21300000, guid: e69677870d3e8b244b596d9e14e60842, type: 3}
+  - {fileID: 21300000, guid: d30c6128777d3bf4691bcd5287eff1d8, type: 3}
+  - {fileID: 21300000, guid: 1407656827ed09e41bc95ec232fba4fe, type: 3}
+  - {fileID: 21300000, guid: b50f96291e83e564da589137c40ab318, type: 3}
+  - {fileID: 21300000, guid: 69ff8e29a6be37045985db7e4d01ab40, type: 3}
+  - {fileID: 21300000, guid: 8625176c4558cf9469b3bf15de48f8fc, type: 3}
+  - {fileID: 21300000, guid: ed93967d8154e3c41992a83c62c235f1, type: 3}
+  - {fileID: 21300000, guid: d75c88dd24ee58b42a60c0fb8b5bbe97, type: 3}
+  - {fileID: 21300000, guid: 25a468ede9f8d7d4990cab2c225f3621, type: 3}
+  - {fileID: 21300000, guid: a211417eef208194f9e7fec7e84b7eb6, type: 3}
+  - {fileID: 21300000, guid: 86308d8ee7cdcde4eafe023387b2f335, type: 3}
+  - {fileID: 21300000, guid: dc54741f93bba8d47927f22fe9e18e27, type: 3}
+  - {fileID: 21300000, guid: d0c3aebfad08e8849ae45e061805d4b7, type: 3}
+  - {fileID: 21300000, guid: 5a2e65cf4a828e24a87e61aeeba60012, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - IIcon Lock
+  - Icon Cup With Background
+  - Icon Replay
+  - Sound Off Stroke
+  - Icon Rotate Right
+  - Icon Menu
+  - Icon Rotate Left
+  - Next Icon Disabled
+  - Page Indicator Hollowed
+  - Icon Sound Off
+  - Icon Play
+  - Icon Question
+  - Button Hovered
+  - Button Default
+  - Icon Sound On
+  - Button Pressed
+  - Next Icon Enabdled
+  - Icon Rocket
+  - Page Indicator Filled
+  - Icon Pause
+  - Checkbox Hollow
+  - Page Indicator Background
+  - Level Button Number Background
+  - Checkbox Filled
+  - Main Menu Logo
+  m_RenderDataMap: {}
+  m_Tag: UI Atlas
+  m_IsVariant: 0

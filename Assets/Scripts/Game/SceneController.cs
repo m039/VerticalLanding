@@ -1,6 +1,8 @@
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using m039.Common;
+using UnityEngine;
+using System.Collections;
 
 namespace SF
 {
@@ -36,6 +38,26 @@ namespace SF
                 _pauseScreen.Close();
                 _pauseScreen = null;
             }
+        }
+
+        public void ShowLevelCompletionScreen()
+        {
+            static IEnumerator show()
+            {
+                yield return new WaitForSeconds(1f);
+
+                LevelCompletionScreen.Create(
+                    GameConfig.Instance.levelCompletetionScreenPrefab,
+                    LevelSelectionManager.Instance.GetCurrentLevel()
+                    );
+            }
+
+            StartCoroutine(show());
+        }
+
+        public void LoadNextLevel(int level)
+        {
+            Debug.Log("TODO");
         }
     }
 }

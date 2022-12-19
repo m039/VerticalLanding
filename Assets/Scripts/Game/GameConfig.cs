@@ -17,6 +17,8 @@ namespace SF
 
         public PauseScreen pauseScreenPrefab;
 
+        public LevelCompletionScreen levelCompletetionScreenPrefab;
+
         #endregion
 
         #region SingletonScriptableObject

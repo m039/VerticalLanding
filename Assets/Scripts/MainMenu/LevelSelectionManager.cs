@@ -40,5 +40,21 @@ namespace SF
         {
             SceneManager.LoadScene("Level_1");
         }
+
+        public int GetCurrentLevel()
+        {
+            var scene = SceneManager.GetActiveScene();
+            var undesrcore = scene.name.LastIndexOf('_');
+            if (undesrcore == -1)
+                return -1;
+
+            var number = scene.name.Substring(undesrcore + 1);
+            if (int.TryParse(number, out int result))
+            {
+                return result;
+            }
+
+            return -1;
+        }
     }
 }
