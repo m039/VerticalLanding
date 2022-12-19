@@ -6,7 +6,7 @@ using System.Collections;
 using UnityEditor;
 #endif
 
-namespace SF
+namespace VL
 {
     public class MovingPlatform : MonoBehaviour
     {

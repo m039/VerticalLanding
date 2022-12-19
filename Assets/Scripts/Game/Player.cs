@@ -6,7 +6,7 @@ using m039.BasicLocalization;
 using m039.Common;
 using System.Linq;
 
-namespace SF
+namespace VL
 {
     public class Player : MonoBehaviour
     {

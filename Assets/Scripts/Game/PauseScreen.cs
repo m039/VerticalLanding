@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace SF
+namespace VL
 {
     public class PauseScreen : MonoBehaviour, IEndAnimation
     {

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace SF
+namespace VL
 {
     public class RocketFlame : MonoBehaviour
     {

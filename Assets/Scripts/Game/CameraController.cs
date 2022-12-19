@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
-namespace SF
+namespace VL
 {
     public class CameraController : MonoBehaviour
     {

@@ -1,6 +1,6 @@
 using System.Runtime.InteropServices;
 
-namespace SF
+namespace VL
 {
     public static class WebGLSupport
     {

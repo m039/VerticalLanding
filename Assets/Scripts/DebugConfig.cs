@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
-namespace SF
+namespace VL
 {
     public class DebugConfig : SingletonScriptableObject<DebugConfig>
     {

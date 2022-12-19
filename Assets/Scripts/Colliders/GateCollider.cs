@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace SF
+namespace VL
 {
     public class GateCollider : MonoBehaviour
     {

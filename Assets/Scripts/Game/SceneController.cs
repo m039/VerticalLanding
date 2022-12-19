@@ -4,7 +4,7 @@ using m039.Common;
 using UnityEngine;
 using System.Collections;
 
-namespace SF
+namespace VL
 {
     public class SceneController : SingletonMonoBehaviour<SceneController>
     {

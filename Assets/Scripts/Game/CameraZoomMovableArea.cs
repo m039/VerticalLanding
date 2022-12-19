@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace SF
+namespace VL
 {
     [ExecuteInEditMode]
     public class CameraZoomMovableArea : MonoBehaviour

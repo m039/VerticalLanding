@@ -7,7 +7,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace SF
+namespace VL
 {
     public class LevelCompletionScreen : MonoBehaviour
     {

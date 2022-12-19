@@ -1,7 +1,7 @@
 using m039.Common;
 using UnityEngine;
 
-namespace SF
+namespace VL
 {
     public class GateColorData : SingletonScriptableObject<GateColorData>
     {

@@ -1,10 +1,10 @@
 using UnityEngine;
 
-namespace SF
+namespace VL
 {
     public static class Consts
     {
-        public const string MenuItemRoot = "SF";
+        public const string MenuItemRoot = "VL";
 
         public static readonly LayerMask EndPlatformLayerMask = 1 << 6;
 

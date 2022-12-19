@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Linq;
 using m039.Common;
 
-namespace SF
+namespace VL
 {
     [ExecuteInEditMode]
     public class PlayerAnimationBody : MonoBehaviour

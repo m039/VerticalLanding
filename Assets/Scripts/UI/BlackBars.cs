@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace SF
+namespace VL
 {
     [ExecuteInEditMode]
     public class BlackBars : MonoBehaviour

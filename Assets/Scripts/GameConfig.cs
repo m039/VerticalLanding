@@ -7,7 +7,7 @@ using m039.Common;
 using UnityEditor;
 #endif
 
-namespace SF
+namespace VL
 {
     public class GameConfig : SingletonScriptableObject<GameConfig>
     {

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace SF
+namespace VL
 {
     public class NextButton : MonoBehaviour
     {

@@ -84,5 +84,6 @@ Misc/
 # If the source bank files are kept outside of the StreamingAssets folder then these can be ignored.
 # Log files can be ignored.
 fmod_editor.log
-FMOD Project/SF/.cache/
+FMOD Project/VL/.cache/
 Assets/ThirdParty/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset
+
