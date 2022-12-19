@@ -1,7 +1,9 @@
 using m039.BasicLocalization;
+using m039.Common;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -20,18 +22,14 @@ namespace SF
 
         TMPro.TMP_Text _levelFmtText;
 
-        Animator _animator;
-
         private void Awake()
         {
             _levelFmtText = transform.Find("Screen/Text/LevelFmtText").GetComponent<TMPro.TMP_Text>();
-            _animator = GetComponent<Animator>();
         }
 
         private void Start()
         {
             _levelFmtText.text = string.Format(BasicLocalization.GetTranslation("level_fmt"), Level);
-            _animator.SetTrigger("Appear");
         }
 
         public void OnPlayClicked()

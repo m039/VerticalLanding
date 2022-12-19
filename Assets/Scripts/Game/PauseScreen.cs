@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 namespace SF
 {
-    public class PauseScreen : MonoBehaviour
+    public class PauseScreen : MonoBehaviour, IEndAnimation
     {
 
         public static PauseScreen Create(PauseScreen prefab)
@@ -28,7 +28,6 @@ namespace SF
         {
             Pause();
 
-            _animator.SetTrigger("Appear");
             _soundButton.enabled = SoundManager.Instance.IsSoundEnabled();
         }
 
@@ -45,12 +44,6 @@ namespace SF
         public void Close()
         {
             _animator.SetTrigger("Disappear");
-        }
-
-        public void EndAnimation()
-        {
-            Resume();
-            Destroy(gameObject);
         }
 
         public void OnPlayClicked()
@@ -75,6 +68,12 @@ namespace SF
             var soundEnabled = !SoundManager.Instance.IsSoundEnabled();
             SoundManager.Instance.SetEnableSound(soundEnabled);
             _soundButton.enabled = soundEnabled;
+        }
+
+        void IEndAnimation.End()
+        {
+            Resume();
+            Destroy(gameObject);
         }
     }
 }

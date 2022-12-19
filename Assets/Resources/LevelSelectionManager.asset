@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6add9c89591cece44b9483b0c0645e14, type: 3}
+  m_Script: {fileID: 11500000, guid: 0393fc1b6095f614daf38c0e5afae6ad, type: 3}
   m_Name: LevelSelectionManager
   m_EditorClassIdentifier: 
-  plusOnePrefab: {fileID: 5871202278583144909, guid: 2a0eeef28d29f4f4f9b5ada55c7bc7fd, type: 3}
-  pauseScreenPrefab: {fileID: 1996962815700665435, guid: 8dacbfaf0456ed244a284bab2d18ebe8, type: 3}
-  levelCompletetionScreenPrefab: {fileID: -3006977641190061889, guid: 25959e283e29da0468e672a3f44d6290, type: 3}
+  _MaxLevels: 3
