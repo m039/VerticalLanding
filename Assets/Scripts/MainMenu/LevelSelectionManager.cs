@@ -1,3 +1,4 @@
+using m039.Common;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,39 +7,58 @@ using UnityEngine.SceneManagement;
 
 namespace SF
 {
-    public class LevelSelectionManager
+    public class LevelSelectionManager : SingletonScriptableObject<LevelSelectionManager>
     {
-        static LevelSelectionManager _sInstance;
+        const string LevelFmt = "Level_{0}";
 
-        public static LevelSelectionManager Instance {
-            get {
-                if (_sInstance == null)
-                    _sInstance = new LevelSelectionManager();
+        #region Inspector
 
-                return _sInstance;
-            }
-        }
+        [SerializeField] int _MaxLevels = 3;
 
-        public int MaxLevels = 22;
+        #endregion
+
+        #region SingletonScriptableObject
+
+        protected override bool UseResourceFolder => true;
+
+        protected override string PathToResource => "LevelSelectionManager";
+
+        #endregion
+
+        public int MaxLevels => _MaxLevels;
 
         public int FindAvailableLevel()
         {
-            return 6;
+            for (int i = MaxLevels; i >= 1; i--)
+            {
+                if (IsLevelAvailable(i))
+                    return i;
+            }
+
+            return 1;
         }
 
         public bool IsLevelCompleted(int level)
         {
-            return level >= 1 && level <= 5;
+            return PlayerPrefs.GetInt(GetLevelSceneName(level) + "_completed", 0) == 1;
+        }
+
+        public void SetLevelCompleted(int level)
+        {
+            PlayerPrefs.SetInt(GetLevelSceneName(level) + "_completed", 1);
         }
 
         public bool IsLevelAvailable(int level)
         {
-            return level >= 1 && level <= 6;
+            if (level == 1)
+                return true;
+
+            return IsLevelCompleted(level - 1);
         }
 
-        public void OpenScene(int level)
+        public void OpenLevelScene(int level)
         {
-            SceneManager.LoadScene("Level_1");
+            SceneManager.LoadScene(GetLevelSceneName(level));
         }
 
         public int GetCurrentLevel()
@@ -55,6 +75,11 @@ namespace SF
             }
 
             return -1;
+        }
+
+        string GetLevelSceneName(int level)
+        {
+            return string.Format(LevelFmt, level);
         }
     }
 }

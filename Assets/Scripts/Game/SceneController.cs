@@ -23,6 +23,11 @@ namespace SF
             }
         }
 
+        public void OpenMainMenu()
+        {
+            SceneManager.LoadScene(Consts.MainMenuSceneName);
+        }
+
         public void Reload()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -40,24 +45,38 @@ namespace SF
             }
         }
 
-        public void ShowLevelCompletionScreen()
+        public void LevelCompleted()
         {
-            static IEnumerator show()
+            var currentLevel = LevelSelectionManager.Instance.GetCurrentLevel();
+            LevelSelectionManager.Instance.SetLevelCompleted(currentLevel);
+
+            // Show a completion screen.
+            IEnumerator show()
             {
                 yield return new WaitForSeconds(1f);
 
                 LevelCompletionScreen.Create(
                     GameConfig.Instance.levelCompletetionScreenPrefab,
-                    LevelSelectionManager.Instance.GetCurrentLevel()
+                    currentLevel
                     );
             }
 
             StartCoroutine(show());
         }
 
-        public void LoadNextLevel(int level)
+        public void LoadNextLevel()
         {
-            Debug.Log("TODO");
+            var manager = LevelSelectionManager.Instance;
+            var currentLevel = manager.GetCurrentLevel();
+            var nextLevel = currentLevel + 1;
+            if (nextLevel > manager.MaxLevels ||
+                manager.IsLevelCompleted(nextLevel))
+            {
+                OpenMainMenu();
+            } else
+            {
+                manager.OpenLevelScene(nextLevel);
+            }
         }
     }
 }

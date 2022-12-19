@@ -220,7 +220,7 @@ namespace SF
 
         void CompleteLevel()
         {
-            SceneController.Instance.ShowLevelCompletionScreen();
+            SceneController.Instance.LevelCompleted();
             StopFlame();
             _freezeControls = true;
             _levelCompleted = true;

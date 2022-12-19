@@ -18,7 +18,29 @@ namespace SF
 
         #endregion
 
-        public float Width => _MovableAreaSize.x;
+        public float Width
+        {
+            get
+            {
+                return _MovableAreaSize.x;
+            }
+            set
+            {
+                _MovableAreaSize.x = value;
+            }
+        }
+
+        public float Height
+        {
+            get
+            {
+                return _MovableAreaSize.y;
+            }
+            set
+            {
+                _MovableAreaSize.y = value;
+            }
+        }
 
         public float TopY {
             get {

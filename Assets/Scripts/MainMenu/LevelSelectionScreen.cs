@@ -191,7 +191,7 @@ namespace SF
 
         void OnLevelButtonClicked(LevelButton levelButton)
         {
-            LevelSelectionManager.Instance.OpenScene(levelButton.Level);
+            LevelSelectionManager.Instance.OpenLevelScene(levelButton.Level);
         }
 
         void OnNextButtonClicked()

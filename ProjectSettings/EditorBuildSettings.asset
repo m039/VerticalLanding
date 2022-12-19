@@ -10,6 +10,12 @@ EditorBuildSettings:
     guid: b275032f3de1368409d90748ed8d167c
   - enabled: 1
     path: Assets/Scenes/Level_1.unity
+    guid: 176fcd9ceaa192b4fa5fa4c1c70c7eca
+  - enabled: 1
+    path: Assets/Scenes/Level_2.unity
     guid: 9eb59f59e44621c4fbff1018ce7568d6
+  - enabled: 1
+    path: Assets/Scenes/Level_3.unity
+    guid: 3bc388fccff567944a7211f692c2168c
   m_configObjects:
     com.m039.localization.settings: {fileID: 11400000, guid: 2eaaf147c42919a47ba3da6654a5af07, type: 2}

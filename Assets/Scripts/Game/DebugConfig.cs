@@ -47,6 +47,7 @@ namespace SF
 
                 if (GUILayout.Button("Delete All Preferences"))
                 {
+                    Debug.Log("All preferences have been deleted.");
                     PlayerPrefs.DeleteAll();
                 }
             }

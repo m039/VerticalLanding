@@ -36,12 +36,12 @@ namespace SF
 
         public void OnPlayClicked()
         {
-            SceneController.Instance.LoadNextLevel(Level);
+            SceneController.Instance.LoadNextLevel();
         }
 
         public void OnMenuClicked()
         {
-            SceneManager.LoadScene(Consts.MainMenuSceneName);
+            SceneController.Instance.OpenMainMenu();
         }
 
         public void OnReplayClicked()

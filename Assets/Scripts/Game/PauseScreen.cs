@@ -61,7 +61,7 @@ namespace SF
         public void OnMenuClicked()
         {
             Resume();
-            SceneManager.LoadScene(Consts.MainMenuSceneName);
+            SceneController.Instance.OpenMainMenu();
         }
 
         public void OnReplayClicked()
