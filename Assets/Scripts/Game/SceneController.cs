@@ -21,17 +21,11 @@ namespace SF
             {
                 Reload();
             }
-
-#if UNITY_EDITOR
-            if (Keyboard.current.fKey.wasPressedThisFrame)
-            {
-                LevelCompleted();
-            }
-#endif
         }
 
         public void OpenMainMenu()
         {
+            MainMenuManager.ShowLevelSelectionScreen = true;
             SceneManager.LoadScene(Consts.MainMenuSceneName);
         }
 

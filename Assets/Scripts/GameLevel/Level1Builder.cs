@@ -28,7 +28,7 @@ namespace SF
             _MovableArea.Height = height;
 
             var p = _FinishPlatform.transform.position;
-            p.y = _MovableArea.TopY - height - _YOffset;
+            p.y = _MovableArea.TopY - height - _YOffset - _MovableArea.GetBottomOffset();
             _FinishPlatform.transform.position = p;
         }
     }

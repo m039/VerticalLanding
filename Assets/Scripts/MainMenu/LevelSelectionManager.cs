@@ -50,6 +50,9 @@ namespace SF
 
         public bool IsLevelAvailable(int level)
         {
+            if (DebugConfig.Instance.allLevelsAvailable)
+                return true;
+
             if (level == 1)
                 return true;
 

@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: DebugConfig
   m_EditorClassIdentifier: 
   isWebGLMobile: 0
+  showLevelSelectionScreen: 0

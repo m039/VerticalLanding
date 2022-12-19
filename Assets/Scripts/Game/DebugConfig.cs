@@ -10,15 +10,21 @@ namespace SF
     public class DebugConfig : SingletonScriptableObject<DebugConfig>
     {
 #if UNITY_EDITOR
-        public bool isWebGLMobile = true;
+        public bool isWebGLMobile = false;
 #else
         public bool isWebGLMobile => false;
 #endif
 
 #if UNITY_EDITOR
-        public bool showLevelSelectionScreen = true;
+        public bool showLevelSelectionScreen = false;
 #else
         public bool showLevelSelectionScreen => false;
+#endif
+
+#if UNITY_EDITOR
+        public bool allLevelsAvailable = false;
+#else
+        public bool allLevelsAvailable => false;
 #endif
 
         #region SingletonScriptableObject

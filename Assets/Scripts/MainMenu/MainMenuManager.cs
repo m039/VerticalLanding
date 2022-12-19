@@ -26,6 +26,8 @@ namespace SF
 
         RectTransform[] _screens;
 
+        public static bool ShowLevelSelectionScreen;
+
         void Awake()
         {
             _screens = new []
@@ -34,7 +36,7 @@ namespace SF
                 _LevelSelectionScreen
             };
 
-            ShowScreen(DebugConfig.Instance.showLevelSelectionScreen? _LevelSelectionScreen : _MainScreen, true);
+            ShowScreen(DebugConfig.Instance.showLevelSelectionScreen || ShowLevelSelectionScreen ? _LevelSelectionScreen : _MainScreen, true);
         }
 
         public void OnPlayClicked()
