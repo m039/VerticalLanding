@@ -100,7 +100,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: d0c3aebfad08e8849ae45e061805d4b7, type: 3}
   - {fileID: 21300000, guid: 5a2e65cf4a828e24a87e61aeeba60012, type: 3}
   m_PackedSpriteNamesToIndex:
-  - IIcon Lock
+  - Icon Lock
   - Icon Cup With Background
   - Icon Replay
   - Sound Off Stroke

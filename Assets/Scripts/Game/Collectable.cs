@@ -31,6 +31,8 @@ namespace VL
 
         public GateColor CurrentColor { get; set; } = GateColor.White;
 
+        public Action<Collectable> onCollect;
+
         SpriteRenderer Renderer
         {
             get
@@ -104,6 +106,7 @@ namespace VL
         {
             PlusOne.Create(transform.position);
             FMODUnity.RuntimeManager.PlayOneShot("event:/PickUp");
+            onCollect?.Invoke(this);
             Destroy(gameObject);
         }
     }

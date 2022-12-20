@@ -1,6 +1,7 @@
 using m039.Common;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace VL
@@ -17,12 +18,15 @@ namespace VL
 
         Collectable[] _collectables;
 
+        ClosedDoor _closedDoor;
+
         public bool IsConsumed { get; private set; }
 
         void Start()
         {
             _gates = GetComponentsInChildren<PassableGate>();
             _collectables = GetComponentsInChildren<Collectable>();
+            _closedDoor = GetComponentInChildren<ClosedDoor>();
             IsConsumed = false;
         }
 
@@ -60,6 +64,13 @@ namespace VL
             // Update collectables.
 
             _collectables.ForEach(c => c.CurrentColor = gate.gateColor);
+
+            // Update a closed door.
+
+            if (_closedDoor != null)
+            {
+                _closedDoor.Activate(_collectables.Where(c => c.gateColor == gate.gateColor).ToArray());
+            }
         }
     }
 }
