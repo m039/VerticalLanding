@@ -8,6 +8,7 @@ using UnityEditor;
 
 namespace VL
 {
+    [ExecuteInEditMode]
     public class MovingPlatform : MonoBehaviour
     {
         #region Inspector
@@ -21,7 +22,7 @@ namespace VL
 
         [SerializeField] Vector2 _Point2 = new Vector2(1f, 0f);
 
-        public float speed = 1f;
+        public float moveTime = 1f;
 
         public float startDelay = 1f;
 
@@ -71,7 +72,7 @@ namespace VL
 
             while (true)
             {
-                v += Time.deltaTime * direction * speed;
+                v += Time.deltaTime / moveTime * direction;
 
                 if (direction == 1 && v >= 1f)
                 {
@@ -86,6 +87,30 @@ namespace VL
                 rigidbody.MovePosition(Vector2.Lerp(Point1, Point2, v));
                 yield return null;
             }
+        }
+
+        LineRenderer _lineRenderer;
+
+        void Update()
+        {
+            UpdateLineRenderer();
+        }
+
+        void UpdateLineRenderer()
+        {
+            if (_lineRenderer == null)
+                _lineRenderer = transform.Find("Trail").GetComponent<LineRenderer>();
+
+            void setPosition(int index, Vector2 point)
+            {
+                _lineRenderer.SetPosition(
+                    index,
+                    new Vector3(point.x, point.y, _lineRenderer.transform.position.z)
+                    );
+            }
+
+            setPosition(0, Point1);
+            setPosition(1, Point2);
         }
     }
 
