@@ -12,9 +12,10 @@ namespace VL
 
         public float rotatingSpeed = 60f;
 
+        [Range(0f, 360f)]
         public float defaultAngle = 0f;
 
-        public bool rotateClockwise;
+        public bool rotateClockwise = true;
 
         #endregion
 
@@ -34,7 +35,7 @@ namespace VL
             
         }
 
-        void Update()
+        void FixedUpdate()
         {
             UpdateRotation();
         }

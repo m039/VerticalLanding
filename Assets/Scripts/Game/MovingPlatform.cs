@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+using JetBrains.Annotations;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -32,6 +33,18 @@ namespace VL
 
         #endregion
 
+        LineRenderer _lineRenderer;
+
+        Rigidbody2D _rigidbody;
+
+        float _startDelay;
+
+        float _value;
+
+        float _timeAtEnd;
+
+        int _direction;
+
         public Vector2 Point1 {
             get
             {
@@ -57,39 +70,48 @@ namespace VL
             }
         }
 
-        void Start()
+        private void Awake()
         {
-            StartCoroutine(DoAnimation());
+            _rigidbody = platform.GetComponent<Rigidbody2D>();
+            _value = value;
+            _direction = moveRightAtStart ? 1 : -1;
         }
 
-        IEnumerator DoAnimation()
+        void FixedUpdate()
         {
-            yield return new WaitForSeconds(startDelay);
-
-            var direction = moveRightAtStart ? 1 : -1;
-            var v = value;
-            var rigidbody = platform.GetComponent<Rigidbody2D>();
-
-            while (true)
+            if (_startDelay < startDelay)
             {
-                v += Time.deltaTime / moveTime * direction;
-
-                if (direction == 1 && v >= 1f)
-                {
-                    yield return new WaitForSeconds(stayTimeAtEnd);
-                    direction = -1;
-                } else if (direction == -1 && v <= 0)
-                {
-                    yield return new WaitForSeconds(stayTimeAtEnd);
-                    direction = 1;
-                }
-
-                rigidbody.MovePosition(Vector2.Lerp(Point1, Point2, v));
-                yield return null;
+                _startDelay += Time.deltaTime;
+                return;
             }
-        }
 
-        LineRenderer _lineRenderer;
+            _value = Mathf.Clamp01(_value + Time.deltaTime / moveTime * _direction);
+
+            if (_direction == 1 && _value >= 1f)
+            {
+                if (_timeAtEnd > stayTimeAtEnd)
+                {
+                    _timeAtEnd = 0;
+                    _direction = -1;
+                } else
+                {
+                    _timeAtEnd += Time.deltaTime;
+                }
+            }
+            else if (_direction == -1 && _value <= 0)
+            {
+                if (_timeAtEnd > stayTimeAtEnd)
+                {
+                    _timeAtEnd = 0;
+                    _direction = 1;
+                } else
+                {
+                    _timeAtEnd += Time.deltaTime;
+                }
+            }
+
+            _rigidbody.MovePosition(Vector2.Lerp(Point1, Point2, _value));
+        }
 
         void Update()
         {
