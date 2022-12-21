@@ -49,7 +49,11 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 69ff8e29a6be37045985db7e4d01ab40, type: 3}
     - {fileID: 2800000, guid: d0c3aebfad08e8849ae45e061805d4b7, type: 3}
     - {fileID: 2800000, guid: a211417eef208194f9e7fec7e84b7eb6, type: 3}
+    - {fileID: 2800000, guid: aae71add69ae2de45b8d35b496de9b7f, type: 3}
     - {fileID: 2800000, guid: ce280011bcacdd14f892b0f30e7fb14f, type: 3}
+    - {fileID: 2800000, guid: c0796c6e327957d45a165a2aaed261ef, type: 3}
+    - {fileID: 2800000, guid: 191b0b02a65578244b87607eca9c0c0a, type: 3}
+    - {fileID: 2800000, guid: 53e1eb209f61cfd499a01d904fba9a1e, type: 3}
     - {fileID: 2800000, guid: 654cff14433f542418a7c7de9f9502bb, type: 3}
     - {fileID: 2800000, guid: 25a468ede9f8d7d4990cab2c225f3621, type: 3}
     - {fileID: 2800000, guid: 3353fa76ae830ed4ea46efe866c43f31, type: 3}
@@ -60,7 +64,7 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 0ba3df937869f9341a5f92125f21b74a, type: 3}
     - {fileID: 2800000, guid: dc1d29b5286ee9e4799fae08b416aa31, type: 3}
     - {fileID: 2800000, guid: b50f96291e83e564da589137c40ab318, type: 3}
-    - {fileID: 2800000, guid: 53e1eb209f61cfd499a01d904fba9a1e, type: 3}
+    - {fileID: 2800000, guid: 59718006975bbcb449a21f0123762e2c, type: 3}
     - {fileID: 2800000, guid: dc54741f93bba8d47927f22fe9e18e27, type: 3}
     - {fileID: 2800000, guid: 5a2e65cf4a828e24a87e61aeeba60012, type: 3}
     - {fileID: 2800000, guid: f9e939c42befe374e97fc6437d50bea5, type: 3}
@@ -76,6 +80,7 @@ SpriteAtlas:
   m_PackedSprites:
   - {fileID: 21300000, guid: 53e1eb209f61cfd499a01d904fba9a1e, type: 3}
   - {fileID: 21300000, guid: ce280011bcacdd14f892b0f30e7fb14f, type: 3}
+  - {fileID: 21300000, guid: 191b0b02a65578244b87607eca9c0c0a, type: 3}
   - {fileID: 21300000, guid: 9b600bd2f7949d344b191416531e9149, type: 3}
   - {fileID: 21300000, guid: 826a0313915bb934bb2d03ff78eb6f03, type: 3}
   - {fileID: 21300000, guid: 0ba3df937869f9341a5f92125f21b74a, type: 3}
@@ -84,6 +89,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: f9e939c42befe374e97fc6437d50bea5, type: 3}
   - {fileID: 21300000, guid: aa099135bb4cd59409653e964dcade7e, type: 3}
   - {fileID: 21300000, guid: dc1d29b5286ee9e4799fae08b416aa31, type: 3}
+  - {fileID: 21300000, guid: 59718006975bbcb449a21f0123762e2c, type: 3}
   - {fileID: 21300000, guid: 3353fa76ae830ed4ea46efe866c43f31, type: 3}
   - {fileID: 21300000, guid: e69677870d3e8b244b596d9e14e60842, type: 3}
   - {fileID: 21300000, guid: d30c6128777d3bf4691bcd5287eff1d8, type: 3}
@@ -93,7 +99,9 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 8625176c4558cf9469b3bf15de48f8fc, type: 3}
   - {fileID: 21300000, guid: ed93967d8154e3c41992a83c62c235f1, type: 3}
   - {fileID: 21300000, guid: d75c88dd24ee58b42a60c0fb8b5bbe97, type: 3}
+  - {fileID: 21300000, guid: aae71add69ae2de45b8d35b496de9b7f, type: 3}
   - {fileID: 21300000, guid: 25a468ede9f8d7d4990cab2c225f3621, type: 3}
+  - {fileID: 21300000, guid: c0796c6e327957d45a165a2aaed261ef, type: 3}
   - {fileID: 21300000, guid: a211417eef208194f9e7fec7e84b7eb6, type: 3}
   - {fileID: 21300000, guid: 86308d8ee7cdcde4eafe023387b2f335, type: 3}
   - {fileID: 21300000, guid: dc54741f93bba8d47927f22fe9e18e27, type: 3}
@@ -102,6 +110,7 @@ SpriteAtlas:
   m_PackedSpriteNamesToIndex:
   - Icon Lock
   - Icon Cup With Background
+  - Icon Lock Only Body
   - Icon Replay
   - Sound Off Stroke
   - Icon Rotate Right
@@ -110,6 +119,7 @@ SpriteAtlas:
   - Next Icon Disabled
   - Page Indicator Hollowed
   - Icon Sound Off
+  - Icon Timer
   - Icon Play
   - Icon Question
   - Button Hovered
@@ -119,7 +129,9 @@ SpriteAtlas:
   - Next Icon Enabdled
   - Icon Rocket
   - Page Indicator Filled
+  - Icon Close
   - Icon Pause
+  - Icon Lock Handle
   - Checkbox Hollow
   - Page Indicator Background
   - Level Button Number Background
