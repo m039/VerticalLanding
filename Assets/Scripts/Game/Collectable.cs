@@ -102,8 +102,15 @@ namespace VL
             _iconRenderer.color = Color.black.WithAlpha(_iconAlpha);
         }
 
+        bool _isCollected;
+
         public void Collect()
         {
+            if (_isCollected)
+                return;
+
+            _isCollected = true;
+
             PlusOne.Create(transform.position);
             FMODUnity.RuntimeManager.PlayOneShot("event:/PickUp");
             onCollect?.Invoke(this);

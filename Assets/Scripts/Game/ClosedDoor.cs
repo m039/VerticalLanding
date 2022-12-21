@@ -30,6 +30,7 @@ namespace VL
         void UpdateTextNumber()
         {
             _text.text = _collectableCount.ToString();
+            LockIndicator.Instance?.SetNumber(_collectableCount);
         }
 
         public void Activate(Collectable[] collectables)
@@ -47,6 +48,8 @@ namespace VL
                 _collectableCount = collectables.Length;
                 _text.gameObject.SetActive(true);
                 UpdateTextNumber();
+
+                LockIndicator.Instance?.Appear();
             }
         }
 
@@ -73,6 +76,8 @@ namespace VL
             }
 
             StartCoroutine(fadeOut());
+
+            LockIndicator.Instance?.Disappear();
         }
 
         void OnCollect(Collectable collectable)

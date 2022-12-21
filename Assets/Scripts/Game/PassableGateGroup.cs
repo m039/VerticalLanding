@@ -22,7 +22,7 @@ namespace VL
 
         public bool IsConsumed { get; private set; }
 
-        void Start()
+        void Awake()
         {
             _gates = GetComponentsInChildren<PassableGate>();
             _collectables = GetComponentsInChildren<Collectable>();
