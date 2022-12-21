@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0393fc1b6095f614daf38c0e5afae6ad, type: 3}
   m_Name: LevelSelectionManager
   m_EditorClassIdentifier: 
-  _MaxLevels: 22
+  _MaxLevels: 27

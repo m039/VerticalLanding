@@ -1,3 +1,4 @@
+using m039.BasicLocalization;
 using m039.Common;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,6 +19,8 @@ namespace VL
 
         [SerializeField] RectTransform _LevelSelectionScreen;
 
+        [SerializeField] RectTransform _HelpScreen;
+
         [SerializeField] float _AnimationDuration = 1f;
 
         #endregion
@@ -36,7 +39,16 @@ namespace VL
                 _LevelSelectionScreen
             };
 
+            InitHelp();
+
             ShowScreen(DebugConfig.Instance.showLevelSelectionScreen || ShowLevelSelectionScreen ? _LevelSelectionScreen : _MainScreen, true);
+        }
+
+        void InitHelp()
+        {
+            _HelpScreen.gameObject.SetActive(false);
+            _HelpScreen.transform.Find("Text").GetComponent<TMPro.TMP_Text>().text =
+                BasicLocalization.GetTranslation(WebGLSupport.IsMobile() ? "help_text_mobile" : "help_text_desktop");
         }
 
         public void OnPlayClicked()
@@ -46,7 +58,12 @@ namespace VL
 
         public void OnHelpClicked()
         {
+            _HelpScreen.gameObject.SetActive(true);
+        }
 
+        public void OnHelpCloseClicked()
+        {
+            _HelpScreen.gameObject.SetActive(false);
         }
 
         public void OnMenuClicked()
