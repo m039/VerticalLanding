@@ -2,6 +2,7 @@ using m039.Common;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace VL
@@ -20,6 +21,8 @@ namespace VL
 
         ClosedDoor _closedDoor;
 
+        TimerEntity _timer;
+
         public bool IsConsumed { get; private set; }
 
         void Awake()
@@ -27,10 +30,11 @@ namespace VL
             _gates = GetComponentsInChildren<PassableGate>();
             _collectables = GetComponentsInChildren<Collectable>();
             _closedDoor = GetComponentInChildren<ClosedDoor>();
+            _timer = GetComponentInChildren<TimerEntity>();
             IsConsumed = false;
         }
 
-        public void Consume(PassableGate gate)
+        public void Consume(Player player, PassableGate gate)
         {
             if (IsConsumed)
                 return;
@@ -70,6 +74,15 @@ namespace VL
             if (_closedDoor != null)
             {
                 _closedDoor.Activate(_collectables.Where(c => c.gateColor == gate.gateColor).ToArray());
+            }
+
+            // Updated a timer.
+
+            if (_timer != null)
+            {
+                _timer.onTrigger += () => player.LoseLevel();
+                player.onLevelCompleted += () => _timer.StopTimer();
+                _timer.StartTimer();
             }
         }
     }

@@ -54,6 +54,8 @@ namespace VL
 
         RocketFlame _flame;
 
+        public System.Action onLevelCompleted;
+
         private void Awake()
         {
             _animator = GetComponent<Animator>();
@@ -220,6 +222,7 @@ namespace VL
 
         void CompleteLevel()
         {
+            onLevelCompleted?.Invoke();
             SceneController.Instance.LevelCompleted();
             StopFlame();
             _freezeControls = true;
@@ -228,7 +231,7 @@ namespace VL
             FMODUnity.RuntimeManager.PlayOneShot("event:/LevelCompleted");
         }
 
-        void LoseLevel()
+        public void LoseLevel()
         {
             StopFlame();
             DestroyCapsule();
@@ -280,7 +283,7 @@ namespace VL
                 collider.GetComponent<ObstacleCollider>())
             {
                 LoseLevel();
-            } else if (collider.GetComponent<GateCollider>() is GateCollider gate && gate.Consume())
+            } else if (collider.GetComponent<GateCollider>() is GateCollider gate && gate.Consume(this))
             {
                 SetBodyColor(gate.GetGateColor());
             } else if (collider.GetComponent<CollectableCollider>() is CollectableCollider collectable)

@@ -15,14 +15,14 @@ namespace VL
             _gate = GetComponentInParent<PassableGate>();
         }
 
-        public bool Consume()
+        public bool Consume(Player player)
         {
             if (_gateGroup == null)
                 return true;
 
             var isConsumed = _gateGroup.IsConsumed;
 
-            _gateGroup.Consume(_gate);
+            _gateGroup.Consume(player, _gate);
 
             return !isConsumed;
         }
