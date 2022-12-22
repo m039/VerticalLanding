@@ -25,13 +25,9 @@ namespace VL
             }
         }
 
-        [DllImport("__Internal")]
-        private static extern string GetLang();
-
         void DoAwake()
         {
-#if UNITY_WEBGL && !UNITY_EDITOR
-            var code = GetLang();
+            var code = YandexManager.Instance.GetLangCode();
             var languages = BasicLocalization.GetAvailableLanguages();
             for (int i = 0; i < languages.Count; i++)
             {
@@ -41,7 +37,6 @@ namespace VL
                     break;
                 }
             }
-#endif
         }
     }
 }

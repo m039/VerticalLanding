@@ -1,5 +1,5 @@
 mergeInto(LibraryManager.library, {
-	GetLang: function() {
+	GetLangInternal: function() {
 		var lang = ysdk.environment.i18n.lang;
 		var bufferSize = lengthBytesUTF8(lang) + 1;
 		var buffer = _malloc(bufferSize);
@@ -11,11 +11,24 @@ mergeInto(LibraryManager.library, {
 		ysdk.adv.showFullscreenAdv({
 			callbacks: {
 				onClose: function(wasShown) {
-				  myUnityInstance.SendMessage('AdManager', 'OnAdvClosed', new Boolean(wasShown).toString());
+				  myUnityInstance.SendMessage('YandexManager', 'OnAdvClosed', new Boolean(wasShown).toString());
 				},
 				onError: function(error) {
 				}
 			}
 		});
 	},
+
+	UploadGameDataInternal: function(data) {
+    	var dataString = UTF8ToString(data);
+    	var myobj = JSON.parse(dataString);
+    	player.setData(myobj);
+  	},
+
+  	DownloadGameDataInternal: function() {
+    	player.getData().then(_data => {
+        	const myJSON = JSON.stringify(_data);
+        	myUnityInstance.SendMessage('YandexManager', 'OnDownloadGameData', myJSON);
+    	});
+ 	},
   });

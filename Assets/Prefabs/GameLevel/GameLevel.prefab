@@ -1966,7 +1966,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4665699734874184069, guid: 1ca2b2e34fb275440bf5db884a7418ae, type: 3}
       propertyPath: m_Name
-      value: AdManager
+      value: YandexManager
       objectReference: {fileID: 0}
     - target: {fileID: 8364012512769373794, guid: 1ca2b2e34fb275440bf5db884a7418ae, type: 3}
       propertyPath: m_RootOrder

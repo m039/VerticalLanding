@@ -43,9 +43,23 @@ namespace VL
             return PlayerPrefs.GetInt(GetLevelSceneName(level) + "_completed", 0) == 1;
         }
 
-        public void SetLevelCompleted(int level)
+        public void SetLevelCompleted(int level, bool upload = true)
         {
             PlayerPrefs.SetInt(GetLevelSceneName(level) + "_completed", 1);
+
+            if (upload)
+            {
+                var completedLevels = new List<int>();
+                for (int i = 1; i < MaxLevels; i++)
+                {
+                    if (IsLevelCompleted(i))
+                    {
+                        completedLevels.Add(i);
+                    }
+                }
+
+                YandexManager.Instance.UploadGameData(completedLevels.ToArray());
+            }
         }
 
         public bool IsLevelAvailable(int level)

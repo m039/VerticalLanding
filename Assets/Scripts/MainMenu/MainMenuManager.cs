@@ -42,9 +42,35 @@ namespace VL
             ShowScreen(DebugConfig.Instance.showLevelSelectionScreen || ShowLevelSelectionScreen ? _LevelSelectionScreen : _MainScreen, true);
         }
 
+        static bool isDataDownloaded = false;
+
         void Start()
         {
             InitHelp();
+
+            YandexManager.Instance.onDownloadGameData += OnDownloadGameData;
+
+            if (!isDataDownloaded)
+            {
+                YandexManager.Instance.DownloadGameData();
+            }
+        }
+
+        void OnDestroy()
+        {
+            YandexManager.Instance.onDownloadGameData -= OnDownloadGameData;
+        }
+
+        void OnDownloadGameData(int[] completedLevels)
+        {
+            isDataDownloaded = true;
+
+            foreach (var level in completedLevels)
+            {
+                LevelSelectionManager.Instance.SetLevelCompleted(level, upload: false);
+            }
+
+            _LevelSelectionScreen.GetComponent<LevelSelectionScreen>().OpenPage();
         }
 
         void InitHelp()

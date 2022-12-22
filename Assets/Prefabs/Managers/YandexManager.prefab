@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8364012512769373794}
   - component: {fileID: 2874872029938114291}
   m_Layer: 0
-  m_Name: AdManager
+  m_Name: YandexManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

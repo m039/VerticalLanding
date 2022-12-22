@@ -50,12 +50,17 @@ namespace VL
 
         void Start()
         {
-            var availableLevel = LevelSelectionManager.Instance.FindAvailableLevel();
-            MoveToPage((int)Mathf.Ceil((float)availableLevel / CellsCount) - 1, true);
+            OpenPage();
 
             // Init prev and next buttons.
             _PreviousButton.button.onClick.AddListener(OnPreviusButtonClicked);
             _NextButton.button.onClick.AddListener(OnNextButtonClicked);
+        }
+
+        public void OpenPage()
+        {
+            var availableLevel = LevelSelectionManager.Instance.FindAvailableLevel();
+            MoveToPage((int)Mathf.Ceil((float)availableLevel / CellsCount) - 1, true);
         }
 
         void MoveToPage(int page, bool force)

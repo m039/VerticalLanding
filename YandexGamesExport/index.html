@@ -28,7 +28,19 @@
         .then(ysdk => {
           console.log('Yandex SDK initialized');
           window.ysdk = ysdk;
+
+          initPlayer();
         });
+
+        var player;
+
+        function initPlayer() {
+          ysdk.getPlayer({ scopes: false }).then(_player => {
+            player = _player;
+          }).catch(err => {
+              // Ошибка при инициализации объекта Player.
+          });
+        }
     </script>
 
     <script>
