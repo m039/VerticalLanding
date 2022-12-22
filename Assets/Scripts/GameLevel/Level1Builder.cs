@@ -15,8 +15,6 @@ namespace VL
 
         [SerializeField] Camera _Camera;
 
-        [SerializeField] float _YOffset;
-
         #endregion
 
         void Update()
@@ -25,10 +23,10 @@ namespace VL
                 return;
 
             var height = _Camera.orthographicSize * 2;
-            _MovableArea.Height = height;
+            _MovableArea.Height = height + _MovableArea.GetBottomOffset();
 
             var p = _FinishPlatform.transform.position;
-            p.y = _MovableArea.TopY - height - _YOffset - _MovableArea.GetBottomOffset();
+            p.y = _MovableArea.TopY - height - _MovableArea.GetBottomOffset();
             _FinishPlatform.transform.position = p;
         }
     }

@@ -293,7 +293,6 @@ MonoBehaviour:
   _MovableArea: {fileID: 1795691684}
   _FinishPlatform: {fileID: 616380725}
   _Camera: {fileID: 1881608339}
-  _YOffset: 0
 --- !u!4 &1667033584
 Transform:
   m_ObjectHideFlags: 0
@@ -400,6 +399,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1307419497902973628, guid: b2cdac7396890094981c8dedd2332091, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2347146526690541633, guid: b2cdac7396890094981c8dedd2332091, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -460,6 +463,10 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 2854301705182080697, guid: b2cdac7396890094981c8dedd2332091, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2854301705519216234, guid: b2cdac7396890094981c8dedd2332091, type: 3}
       propertyPath: m_Size.x
       value: 5.625
@@ -495,6 +502,14 @@ PrefabInstance:
     - target: {fileID: 6911929805980478360, guid: b2cdac7396890094981c8dedd2332091, type: 3}
       propertyPath: m_Name
       value: GameLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 8857151424069375597, guid: b2cdac7396890094981c8dedd2332091, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8857151425045684073, guid: b2cdac7396890094981c8dedd2332091, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2cdac7396890094981c8dedd2332091, type: 3}

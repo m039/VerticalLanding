@@ -39,9 +39,12 @@ namespace VL
                 _LevelSelectionScreen
             };
 
-            InitHelp();
-
             ShowScreen(DebugConfig.Instance.showLevelSelectionScreen || ShowLevelSelectionScreen ? _LevelSelectionScreen : _MainScreen, true);
+        }
+
+        void Start()
+        {
+            InitHelp();
         }
 
         void InitHelp()

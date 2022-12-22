@@ -90,6 +90,8 @@ namespace VL
             {
                 _animator.SetTrigger("Appear");
             }
+
+            AdManager.Instance.OnStartLevel();
         }
 
         void DoReset()
@@ -229,6 +231,7 @@ namespace VL
             _levelCompleted = true;
 
             FMODUnity.RuntimeManager.PlayOneShot("event:/LevelCompleted");
+            AdManager.Instance.OnCompleteLevel();
         }
 
         public void LoseLevel()
@@ -249,6 +252,7 @@ namespace VL
 
             StartCoroutine(reload());
             CameraShake.Shake(1f, 0.1f);
+            AdManager.Instance.OnDie();
         }
 
         void DestroyCapsule()
