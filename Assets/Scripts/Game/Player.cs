@@ -91,7 +91,10 @@ namespace VL
                 _animator.SetTrigger("Appear");
             }
 
-            YandexManager.Instance.ShowAdvOnStartLevel();
+            if (LevelSelectionManager.Instance.GetCurrentLevel() != 1)
+            {
+                YandexManager.Instance.ShowAdv();
+            }
         }
 
         void DoReset()
@@ -231,7 +234,6 @@ namespace VL
             _levelCompleted = true;
 
             FMODUnity.RuntimeManager.PlayOneShot("event:/LevelCompleted");
-            YandexManager.Instance.ShowAdvOnCompleteLevel();
         }
 
         public void LoseLevel()
@@ -252,7 +254,7 @@ namespace VL
 
             StartCoroutine(reload());
             CameraShake.Shake(1f, 0.1f);
-            YandexManager.Instance.ShowAdvOnDie();
+            YandexManager.Instance.ShowAdv();
         }
 
         void DestroyCapsule()

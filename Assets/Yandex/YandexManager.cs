@@ -6,14 +6,14 @@ using UnityEngine;
 
 namespace VL
 {
-    [System.Serializable]
-    public class YandexGameData
-    {
-        public string completedLevels;
-    }
-
     public class YandexManager : MonoBehaviour
     {
+        [System.Serializable]
+        class YandexGameData
+        {
+            public string completedLevels;
+        }
+
         static public YandexManager Instance;
 
         public System.Action<int[]> onDownloadGameData;
@@ -46,7 +46,7 @@ namespace VL
         private static extern string GetLangInternal();
 #endif
 
-        void ShowAdv()
+        public void ShowAdv()
         {
 #if !UNITY_EDITOR && UNITY_WEBGL
             Time.timeScale = 0f;
@@ -105,29 +105,6 @@ namespace VL
             }
 
             onDownloadGameData?.Invoke(completedLevels.ToArray());
-        }
-
-        public void ShowAd()
-        {
-            ShowAdv();
-        }
-
-        public void ShowAdvOnDie()
-        {
-            ShowAdv();
-        }
-
-        public void ShowAdvOnCompleteLevel()
-        {
-            // ShowAdv();
-        }
-
-        public void ShowAdvOnStartLevel()
-        {
-            if (LevelSelectionManager.Instance.GetCurrentLevel() != 1)
-            {
-                ShowAdv();
-            }
         }
     }
 }
