@@ -8,7 +8,7 @@ namespace VL
 {
     public class YandexManager : MonoBehaviour
     {
-        const float MinTimeBetweenAdv = 30f;
+        const float MinTimeBetweenAdv = 60f;
 
         [System.Serializable]
         class YandexGameData
@@ -52,7 +52,7 @@ namespace VL
 
         void Start()
         {
-            _timeBetweenAdv = Time.realtimeSinceStartup + MinTimeBetweenAdv;
+            _timeBetweenAdv = Time.realtimeSinceStartup + MinTimeBetweenAdv / 2;
         }
 
         public void ShowAdv()
