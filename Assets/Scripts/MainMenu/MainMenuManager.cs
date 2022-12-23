@@ -54,11 +54,14 @@ namespace VL
             {
                 YandexManager.Instance.DownloadGameData();
             }
+
+            BasicLocalization.OnLanguageChanged += OnLanguageChanged;
         }
 
         void OnDestroy()
         {
             YandexManager.Instance.onDownloadGameData -= OnDownloadGameData;
+            BasicLocalization.OnLanguageChanged -= OnLanguageChanged;
         }
 
         void OnDownloadGameData(int[] completedLevels)
@@ -71,6 +74,11 @@ namespace VL
             }
 
             _LevelSelectionScreen.GetComponent<LevelSelectionScreen>().OpenPage();
+        }
+
+        void OnLanguageChanged(BasicLocalizationLanguage language)
+        {
+            InitHelp();
         }
 
         void InitHelp()

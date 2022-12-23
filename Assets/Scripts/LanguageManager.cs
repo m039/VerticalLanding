@@ -17,7 +17,6 @@ namespace VL
                 Instance = this;
                 gameObject.transform.SetParent(null);
                 DontDestroyOnLoad(gameObject);
-                DoAwake();
             }
             else
             {
@@ -25,7 +24,7 @@ namespace VL
             }
         }
 
-        void DoAwake()
+        void Start()
         {
             var code = YandexManager.Instance.GetLangCode();
             var languages = BasicLocalization.GetAvailableLanguages();

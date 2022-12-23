@@ -250,11 +250,12 @@ namespace VL
                 yield return new WaitForSeconds(3f);
 
                 SceneController.Instance.Reload();
+
+                YandexManager.Instance.ShowAdv();
             }
 
             StartCoroutine(reload());
             CameraShake.Shake(1f, 0.1f);
-            YandexManager.Instance.ShowAdv();
         }
 
         void DestroyCapsule()

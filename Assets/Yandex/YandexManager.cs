@@ -8,6 +8,8 @@ namespace VL
 {
     public class YandexManager : MonoBehaviour
     {
+        const float MinTimeBetweenAdv = 30f;
+
         [System.Serializable]
         class YandexGameData
         {
@@ -17,6 +19,8 @@ namespace VL
         static public YandexManager Instance;
 
         public System.Action<int[]> onDownloadGameData;
+
+        float _timeBetweenAdv;
 
         private void Awake()
         {
@@ -46,8 +50,20 @@ namespace VL
         private static extern string GetLangInternal();
 #endif
 
+        void Start()
+        {
+            _timeBetweenAdv = Time.realtimeSinceStartup + MinTimeBetweenAdv;
+        }
+
         public void ShowAdv()
         {
+            if (_timeBetweenAdv >= Time.realtimeSinceStartup)
+            {
+                return;
+            }
+
+            _timeBetweenAdv = Time.realtimeSinceStartup + MinTimeBetweenAdv;
+
 #if !UNITY_EDITOR && UNITY_WEBGL
             Time.timeScale = 0f;
             ShowAdvInternal();

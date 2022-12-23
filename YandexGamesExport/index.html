@@ -9,10 +9,35 @@
 
     <!-- Yandex Games SDK -->
     <script src="https://yandex.ru/games/sdk/v2"></script>
+
+    <!-- Yandex.RTB -->
+    <script>window.yaContextCb=window.yaContextCb||[]</script>
+    <script src="https://yandex.ru/ads/system/context.js" async></script>
+
+    <style>
+      @media screen and (max-width: 992px) {
+        .hidden-mobile {
+          visibility: hidden;
+          display: none;
+        }
+      }
+    </style>
   </head>
   <body>
     <div id="unity-container" style = "position: absolute; width: 100%; height: 100%; left: 0%; top: 0%;">
       <canvas id="unity-canvas" style = "position: absolute; width: 100%; height: 100%;"></canvas>
+      
+      <div class="hidden-mobile" style="position: absolute; width: 30%; height: 100%; right: 0%;">
+        <!-- Yandex.RTB R-A-2116715-18 -->
+        <div id="yandex_rtb_R-A-2116715-18"></div>
+        <script>window.yaContextCb.push(()=>{
+          Ya.Context.AdvManager.render({
+            renderTo: 'yandex_rtb_R-A-2116715-18',
+            blockId: 'R-A-2116715-18'
+          })
+        })</script>
+      </div>
+      
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
         <div id="unity-progress-bar-empty">
@@ -111,7 +136,7 @@
         canvas.style.width = window.innerWidth + 'px';
         canvas.style.height = window.innerHeight + 'px';
 
-        unityShowBanner('WebGL builds are not supported on mobile devices.');
+        // unityShowBanner('WebGL builds are not supported on mobile devices.');
       } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
 

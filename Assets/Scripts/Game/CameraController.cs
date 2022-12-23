@@ -30,6 +30,8 @@ namespace VL
 
         Vector3 _currentVelocity;
 
+        bool _moveWithoutDeadzone;
+
         void Awake()
         {
             _camera = GetComponent<Camera>();
@@ -38,6 +40,7 @@ namespace VL
         void Start()
         {
             DoReset();
+            _moveWithoutDeadzone = WebGLSupport.IsMobile();
         }
 
         public void DoReset()
@@ -53,7 +56,7 @@ namespace VL
 
         void Update()
         {
-            PositionCamera(false);
+            PositionCamera(_moveWithoutDeadzone);
         }
 
         void PositionCamera(bool force)

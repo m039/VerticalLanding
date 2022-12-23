@@ -137,6 +137,7 @@ namespace VL
                     }
 
                     var d = 0f;
+                    Vector2 p;
 
                     while (d < _TransitionDuration)
                     {
@@ -144,14 +145,21 @@ namespace VL
                         canvasGroup.alpha = EasingFunction.EaseInOutCubic(startAlpha, endAlpha, t);
                         d += Time.deltaTime;
 
-                        var p = levelsGrid.anchoredPosition;
+                        p = levelsGrid.anchoredPosition;
                         p.x = EasingFunction.EaseInOutCubic(startXPosition, endXPosition, t);
                         levelsGrid.anchoredPosition = p;
 
                         yield return null;
                     }
 
+                    canvasGroup.alpha = endAlpha;
+
+                    p = levelsGrid.anchoredPosition;
+                    p.x = endXPosition;
+                    levelsGrid.anchoredPosition = p;
+
                     _isAnimating = false;
+
                     levelsGrid.gameObject.SetActive(appearOrDisappear);
                 }
 
