@@ -48,11 +48,11 @@ namespace VL
         {
             InitHelp();
 
-            YandexManager.Instance.onDownloadGameData += OnDownloadGameData;
+            YandexGamesManager.Instance.onDownloadGameData += OnDownloadGameData;
 
             if (!isDataDownloaded)
             {
-                YandexManager.Instance.DownloadGameData();
+                YandexGamesManager.Instance.DownloadGameData();
             }
 
             BasicLocalization.OnLanguageChanged += OnLanguageChanged;
@@ -60,7 +60,7 @@ namespace VL
 
         void OnDestroy()
         {
-            YandexManager.Instance.onDownloadGameData -= OnDownloadGameData;
+            YandexGamesManager.Instance.onDownloadGameData -= OnDownloadGameData;
             BasicLocalization.OnLanguageChanged -= OnLanguageChanged;
         }
 

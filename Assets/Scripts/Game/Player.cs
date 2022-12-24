@@ -93,7 +93,7 @@ namespace VL
 
             if (LevelSelectionManager.Instance.GetCurrentLevel() != 1)
             {
-                YandexManager.Instance.ShowAdv();
+                YandexGamesManager.Instance.ShowAdv();
             }
         }
 
@@ -234,6 +234,10 @@ namespace VL
             _levelCompleted = true;
 
             FMODUnity.RuntimeManager.PlayOneShot("event:/LevelCompleted");
+
+            YandexMetrikaManager.Instance.ReachGoal(
+                $"level_{LevelSelectionManager.Instance.GetCurrentLevel()}_completed"
+                );
         }
 
         public void LoseLevel()
@@ -251,7 +255,7 @@ namespace VL
 
                 SceneController.Instance.Reload();
 
-                YandexManager.Instance.ShowAdv();
+                YandexGamesManager.Instance.ShowAdv();
             }
 
             StartCoroutine(reload());

@@ -26,7 +26,7 @@ namespace VL
 
         void Start()
         {
-            var code = YandexManager.Instance.GetLangCode();
+            var code = YandexGamesManager.Instance.GetLangCode();
             var languages = BasicLocalization.GetAvailableLanguages();
             for (int i = 0; i < languages.Count; i++)
             {

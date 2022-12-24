@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace VL
 {
-    public class YandexManager : MonoBehaviour
+    public class YandexGamesManager : MonoBehaviour
     {
         const float MinTimeBetweenAdv = 60f;
 
@@ -16,7 +16,7 @@ namespace VL
             public string completedLevels;
         }
 
-        static public YandexManager Instance;
+        static public YandexGamesManager Instance;
 
         public System.Action<int[]> onDownloadGameData;
 

@@ -58,7 +58,7 @@ namespace VL
                     }
                 }
 
-                YandexManager.Instance.UploadGameData(completedLevels.ToArray());
+                YandexGamesManager.Instance.UploadGameData(completedLevels.ToArray());
             }
         }
 

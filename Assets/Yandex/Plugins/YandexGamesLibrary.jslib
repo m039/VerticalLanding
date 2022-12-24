@@ -11,7 +11,7 @@ mergeInto(LibraryManager.library, {
 		ysdk.adv.showFullscreenAdv({
 			callbacks: {
 				onClose: function(wasShown) {
-				  myUnityInstance.SendMessage('YandexGamesManager', 'OnAdvClosed', new Boolean(wasShown).toString());
+				  myUnityInstance.SendMessage('YandexManager', 'OnAdvClosed', new Boolean(wasShown).toString());
 				},
 				onError: function(error) {
 				}
@@ -28,7 +28,7 @@ mergeInto(LibraryManager.library, {
   	DownloadGameDataInternal: function() {
     	player.getData().then(_data => {
         	const myJSON = JSON.stringify(_data);
-        	myUnityInstance.SendMessage('YandexGamesManager', 'OnDownloadGameData', myJSON);
+        	myUnityInstance.SendMessage('YandexManager', 'OnDownloadGameData', myJSON);
     	});
  	},
   });
