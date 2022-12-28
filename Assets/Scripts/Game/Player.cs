@@ -91,10 +91,14 @@ namespace VL
                 _animator.SetTrigger("Appear");
             }
 
-            if (LevelSelectionManager.Instance.GetCurrentLevel() != 1)
+            var currentLevel = LevelSelectionManager.Instance.GetCurrentLevel();
+
+            if (currentLevel != 1)
             {
                 YandexGamesManager.Instance.ShowAdv();
             }
+
+            YandexMetrikaManager.Instance.Hit($"level_{currentLevel}_shown");
         }
 
         void DoReset()
