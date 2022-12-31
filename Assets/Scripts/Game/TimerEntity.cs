@@ -55,6 +55,14 @@ namespace VL
             {
                 TriggerTimer();
             }
+            else if (_seconds <= 5f)
+            {
+                TimerIndicator.Instance?.SetNumberColor(GateColor.Red.ToColor());
+            }
+            else if (_seconds <= 10f)
+            {
+                TimerIndicator.Instance?.SetNumberColor(GateColor.Yellow.ToColor());
+            }
         }
     }
 }
