@@ -31,4 +31,10 @@ mergeInto(LibraryManager.library, {
         	myUnityInstance.SendMessage('YandexGamesManager', 'OnDownloadGameData', myJSON);
     	});
  	},
+	    
+	GameReadyInternal: function() {
+        if (ysdk.features.LoadingAPI) {
+            ysdk.features.LoadingAPI.ready();
+        }
+    },
   });

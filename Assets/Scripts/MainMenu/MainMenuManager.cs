@@ -52,6 +52,7 @@ namespace VL
 
             if (!isDataDownloaded)
             {
+                YandexGamesManager.Instance.GameReady();
                 YandexGamesManager.Instance.DownloadGameData();
             }
 

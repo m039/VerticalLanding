@@ -42,27 +42,6 @@
     </div>
 
     <script>
-      YaGames
-        .init()
-        .then(ysdk => {
-          console.log('Yandex SDK initialized');
-          window.ysdk = ysdk;
-
-          initPlayer();
-        });
-
-        var player;
-
-        function initPlayer() {
-          ysdk.getPlayer({ scopes: false }).then(_player => {
-            player = _player;
-          }).catch(err => {
-              // Ошибка при инициализации объекта Player.
-          });
-        }
-    </script>
-
-    <script>
       var container = document.querySelector("#unity-container");
       var canvas = document.querySelector("#unity-canvas");
       var loadingBar = document.querySelector("#unity-loading-bar");
@@ -103,7 +82,7 @@
         streamingAssetsUrl: "StreamingAssets",
         companyName: "m039.Games",
         productName: "VerticalLanding",
-        productVersion: "0.2.0",
+        productVersion: "0.2.5",
         showBanner: unityShowBanner,
       };
 
@@ -142,21 +121,49 @@
 
       var myUnityInstance = null;
       var script = document.createElement("script");
-      script.src = loaderUrl;
-      script.onload = () => {
-        createUnityInstance(canvas, config, (progress) => {
-          progressBarFull.style.width = 100 * progress + "%";
-        }).then((unityInstance) => {
-          myUnityInstance = unityInstance;
-          loadingBar.style.display = "none";
-          // fullscreenButton.onclick = () => {
-          //   unityInstance.SetFullscreen(1);
-          // };
-        }).catch((message) => {
-          alert(message);
+
+      function createUnityScript() {
+        console.log("VL version 0.2.5");
+
+        script.src = loaderUrl;
+        script.onload = () => {
+          createUnityInstance(canvas, config, (progress) => {
+            progressBarFull.style.width = 100 * progress + "%";
+          }).then((unityInstance) => {
+            myUnityInstance = unityInstance;
+            loadingBar.style.display = "none";
+            // fullscreenButton.onclick = () => {
+            //   unityInstance.SetFullscreen(1);
+            // };
+          }).catch((message) => {
+            alert(message);
+          });
+        };
+        document.body.appendChild(script);
+      }
+    </script>
+
+    <script>
+      YaGames
+        .init()
+        .then(ysdk => {
+          console.log('Yandex SDK initialized');
+          window.ysdk = ysdk;
+
+          createUnityScript();
+          initPlayer();
         });
-      };
-      document.body.appendChild(script);
+
+        var player;
+
+        function initPlayer() {
+          return ysdk.getPlayer({ scopes: false }).then(_player => {
+            player = _player;
+            return _player;
+          }).catch(err => {
+              // Ошибка при инициализации объекта Player.
+          });
+        }
     </script>
   </body>
 </html>

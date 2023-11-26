@@ -48,6 +48,9 @@ namespace VL
 
         [DllImport("__Internal")]
         private static extern string GetLangInternal();
+
+        [DllImport("__Internal")]
+        private static extern void GameReadyInternal();
 #endif
 
         void Start()
@@ -121,6 +124,13 @@ namespace VL
             }
 
             onDownloadGameData?.Invoke(completedLevels.ToArray());
+        }
+
+        public void GameReady()
+        {
+#if !UNITY_EDITOR && UNITY_WEBGL
+            GameReadyInternal();
+#endif
         }
     }
 }
