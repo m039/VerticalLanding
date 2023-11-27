@@ -1,7 +1,7 @@
  var WebGLSupportPlugin = {
      isMobile: function()
      {
-         return Module.SystemInfo.mobile;
+        return ysdk.deviceInfo.isMobile() || ysdk.deviceInfo.isTablet();
      }
  };
 
