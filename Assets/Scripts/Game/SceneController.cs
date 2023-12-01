@@ -59,7 +59,7 @@ namespace VL
                 LevelCompletionScreen.Create(
                     GameConfig.Instance.levelCompletetionScreenPrefab,
                     currentLevel
-                    );
+                );
             }
 
             StartCoroutine(show());

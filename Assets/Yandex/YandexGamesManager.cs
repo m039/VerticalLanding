@@ -21,6 +21,8 @@ namespace VL
 
         public System.Action<int[]> onDownloadGameData;
 
+        public event System.Action onAdvClosed;
+
         float _timeBetweenAdv;
 
         private void Awake()
@@ -62,9 +64,14 @@ namespace VL
             _timeBetweenAdv = Time.realtimeSinceStartup + MinTimeBetweenAdv / 2;
         }
 
+        public bool IsAdvReady()
+        {
+            return _timeBetweenAdv < Time.realtimeSinceStartup;
+        }
+
         public void ShowAdv()
         {
-            if (_timeBetweenAdv >= Time.realtimeSinceStartup)
+            if (!IsAdvReady())
             {
                 return;
             }
@@ -74,6 +81,8 @@ namespace VL
 #if !UNITY_EDITOR && UNITY_WEBGL
             Time.timeScale = 0f;
             ShowAdvInternal();
+#else
+            OnAdvClosed("false");
 #endif
         }
 
@@ -92,6 +101,8 @@ namespace VL
 #if !UNITY_EDITOR && UNITY_WEBGL
             Time.timeScale = 1f;
 #endif
+
+            onAdvClosed?.Invoke();
         }
 
         public void UploadGameData(int[] completedLevels)

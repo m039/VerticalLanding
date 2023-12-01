@@ -75,6 +75,18 @@ namespace VL
             _initGravityScale = _rigidBody.gravityScale;
             _endPlatformCF.useLayerMask = true;
             _endPlatformCF.layerMask = Consts.EndPlatformLayerMask;
+
+            YandexGamesManager.Instance.onAdvClosed += OnAdvClosed;
+        }
+
+        void OnDestroy()
+        {
+            YandexGamesManager.Instance.onAdvClosed -= OnAdvClosed;
+        }
+
+        void OnAdvClosed()
+        {
+            SceneController.Instance.Reload();
         }
 
         void Start()
@@ -92,12 +104,6 @@ namespace VL
             }
 
             var currentLevel = LevelSelectionManager.Instance.GetCurrentLevel();
-
-            if (currentLevel != 1)
-            {
-                YandexGamesManager.Instance.ShowAdv();
-            }
-
             YandexMetrikaManager.Instance.Hit($"level_{currentLevel}_shown");
         }
 
@@ -241,7 +247,7 @@ namespace VL
 
             YandexMetrikaManager.Instance.ReachGoal(
                 $"level_{LevelSelectionManager.Instance.GetCurrentLevel()}_completed"
-                );
+            );
         }
 
         public void LoseLevel()
@@ -257,9 +263,13 @@ namespace VL
             {
                 yield return new WaitForSeconds(3f);
 
-                SceneController.Instance.Reload();
-
-                YandexGamesManager.Instance.ShowAdv();
+                if (YandexGamesManager.Instance.IsAdvReady())
+                {
+                    YandexGamesManager.Instance.ShowAdv();
+                } else
+                {
+                    OnAdvClosed();
+                }
             }
 
             StartCoroutine(reload());
