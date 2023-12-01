@@ -37,4 +37,8 @@ mergeInto(LibraryManager.library, {
             ysdk.features.LoadingAPI.ready();
         }
     },
+
+	IsInitializedInternal: function() {
+        return typeof ysdk != "undefined" && typeof player != "undefined";
+    },
   });

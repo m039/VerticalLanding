@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace VL
@@ -27,16 +28,25 @@ namespace VL
                 _sInstance = this;
                 gameObject.transform.SetParent(null);
                 DontDestroyOnLoad(gameObject);
-                DoAwake();
             } else
             {
                 Destroy(gameObject);
             }
         }
 
-        void DoAwake()
+        void Start()
         {
-            SetEnableSound(IsSoundEnabled());
+            IEnumerator loadAsync()
+            {
+                while (!FMODUnity.RuntimeManager.HaveAllBanksLoaded)
+                {
+                    yield return null;
+                }
+
+                SetEnableSound(IsSoundEnabled());
+            }
+
+            StartCoroutine(loadAsync());
         }
 
         const string SoundEnabledKey = "sound_enabled";
@@ -49,7 +59,7 @@ namespace VL
         public void SetEnableSound(bool enable)
         {
             PlayerPrefs.SetInt(SoundEnabledKey, enable ? 1 : 0);
-            var bus = FMODUnity.RuntimeManager.GetBus("Bus:/Main");
+            var bus = FMODUnity.RuntimeManager.GetBus("bus:/Main");
             bus.setMute(!enable);
         }
     }

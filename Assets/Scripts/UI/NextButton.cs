@@ -11,14 +11,18 @@ namespace VL
 
         Transform _disableIcon;
 
-        void Awake()
-        {
-            _enabledIcon = transform.Find("Icon/Enabled");
-            _disableIcon = transform.Find("Icon/Disabled");
-        }
-
         public void SetIconVisibility(bool visibility)
         {
+            if (_enabledIcon == null)
+            {
+                _enabledIcon = transform.Find("Icon/Enabled");
+            }
+
+            if (_disableIcon == null)
+            {
+                _disableIcon = transform.Find("Icon/Disabled");
+            }
+
             _enabledIcon.gameObject.SetActive(visibility);
             _disableIcon.gameObject.SetActive(!visibility);
         }

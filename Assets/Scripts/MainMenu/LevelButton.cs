@@ -33,8 +33,20 @@ namespace VL
 
         OffsetOnMouseButtonPressed _offsetOnMouseButtonPressed;
 
+        bool _inited = false;
+
         void Awake()
         {
+            Init();
+
+            _button.onClick.AddListener(OnButtonClicked);
+        }
+
+        void Init()
+        {
+            if (_inited)
+                return;
+
             _number = transform.Find("LevelGroup/Number").GetComponent<TMPro.TMP_Text>();
             _checkboxFilled = transform.Find("LevelGroup/Checkbox/Filled");
             _checkboxHollowed = transform.Find("LevelGroup/Checkbox/Hollowed");
@@ -43,7 +55,7 @@ namespace VL
             _button = GetComponent<Button>();
             _offsetOnMouseButtonPressed = GetComponent<OffsetOnMouseButtonPressed>();
 
-            _button.onClick.AddListener(OnButtonClicked);
+            _inited = true;
         }
 
         void OnDestroy()
@@ -58,12 +70,16 @@ namespace VL
 
         public void SetCheckbox(bool enabled)
         {
+            Init();
+
             _checkboxFilled.gameObject.SetActive(enabled);
             _checkboxHollowed.gameObject.SetActive(!enabled);
         }
 
         public void ShowLock(bool on)
         {
+            Init();
+
             _levelGroup.gameObject.SetActive(!on);
             _lockGroup.gameObject.SetActive(on);
             _button.interactable = !on;

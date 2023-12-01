@@ -16,14 +16,18 @@ namespace VL
 
         Transform _hollowed;
 
-        void Awake()
-        {
-            _filled = transform.Find("Filled");
-            _hollowed = transform.Find("Hollowed");
-        }
-
         public void SetFilled(bool select)
         {
+            if (_filled == null)
+            {
+                _filled = transform.Find("Filled");
+            }
+
+            if (_hollowed == null)
+            {
+                _hollowed = transform.Find("Hollowed");
+            }
+
             _filled.gameObject.SetActive(select);
             _hollowed.gameObject.SetActive(!select);
         }

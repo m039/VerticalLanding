@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
+using UnityEngine.Scripting;
 
 namespace VL
 {
@@ -51,6 +52,9 @@ namespace VL
 
         [DllImport("__Internal")]
         private static extern void GameReadyInternal();
+
+        [DllImport("__Internal")]
+        private static extern bool IsInitializedInternal();
 #endif
 
         void Start()
@@ -82,6 +86,7 @@ namespace VL
 #endif
         }
 
+        [Preserve]
         public void OnAdvClosed(string wasShown)
         {
 #if !UNITY_EDITOR && UNITY_WEBGL
@@ -107,6 +112,7 @@ namespace VL
 #endif
         }
 
+        [Preserve]
         public void OnDownloadGameData(string json)
         {
             var data = JsonUtility.FromJson<YandexGameData>(json);
@@ -130,6 +136,15 @@ namespace VL
         {
 #if !UNITY_EDITOR && UNITY_WEBGL
             GameReadyInternal();
+#endif
+        }
+
+        public bool IsInitialized()
+        {
+#if !UNITY_EDITOR && UNITY_WEBGL
+            return IsInitializedInternal();
+#else
+            return true;
 #endif
         }
     }

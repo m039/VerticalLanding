@@ -39,13 +39,21 @@ namespace VL
 
         RectTransform[] _levelGrids;
 
-        void Awake()
+        protected RectTransform[] LevelGrids
         {
-            _levelGrids = new[]
+            get
             {
-                _LevelsGridFirst,
-                _LevelsGridSecond
-            };
+                if (_levelGrids == null)
+                {
+                    _levelGrids = new[]
+                    {
+                        _LevelsGridFirst,
+                        _LevelsGridSecond
+                    };
+                }
+
+                return _levelGrids;
+            }
         }
 
         void Start()
@@ -82,7 +90,7 @@ namespace VL
             // Init level grids.
             if (force)
             {
-                _levelGrids.ForEach(lg =>
+                LevelGrids.ForEach(lg =>
                 {
                     lg.gameObject.SetActive(lg == _LevelsGridFirst);
                     lg.GetComponent<CanvasGroup>().alpha = 1f;
