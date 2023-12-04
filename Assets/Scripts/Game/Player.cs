@@ -251,7 +251,7 @@ namespace VL
             );
 
             var numberOfCompletedLevels = LevelSelectionManager.Instance.NumberOfCompletedLevels();
-            YandexGamesManager.Instance.SetLeaderboardScore("LevelsCompleted", numberOfCompletedLevels);
+            YandexGamesManager.Instance.SetLeaderboardScore("LevelsCompleted1", numberOfCompletedLevels);
         }
 
         public void LoseLevel()
