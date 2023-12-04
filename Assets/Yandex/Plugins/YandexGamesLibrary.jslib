@@ -41,4 +41,12 @@ mergeInto(LibraryManager.library, {
 	IsInitializedInternal: function() {
         return typeof ysdk != "undefined" && typeof player != "undefined";
     },
+
+	YG_setLeaderboardScore: function(leaderboard, number) {
+        var name = UTF8ToString(leaderboard);
+
+        ysdk.getLeaderboards().then(lb => {
+            lb.setLeaderboardScore(name, number);
+        });
+    },
   });

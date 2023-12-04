@@ -119,11 +119,31 @@
 
       loadingBar.style.display = "block";
 
+      function updateAspectRatio() {
+        var windowWidth = window.innerWidth;
+        var windowHeight = window.innerHeight;
+        var containerAspectRatio = 1080.0 / 1920.0;
+        
+        if (windowWidth / windowHeight > containerAspectRatio) {
+          canvas.style.width = windowHeight * containerAspectRatio + "px";
+          canvas.style.height = "100vh";
+        } else {
+          canvas.style.width = "100vw";
+          canvas.style.height = windowWidth / containerAspectRatio + "px";
+        }
+
+        canvas.style.margin = "auto";
+        canvas.style.top = "0";
+        canvas.style.left = "0";
+        canvas.style.bottom = "0";
+        canvas.style.right = "0";
+      }
+
       var myUnityInstance = null;
       var script = document.createElement("script");
 
       function createUnityScript() {
-        console.log("VL version 0.2.6");
+        console.log("VL version 0.2.6-1");
 
         script.src = loaderUrl;
         script.onload = () => {
@@ -152,6 +172,11 @@
 
           createUnityScript();
           initPlayer();
+
+          if (ysdk.deviceInfo.isMobile()) {
+            updateAspectRatio();
+            window.addEventListener("resize", updateAspectRatio);
+          }
         });
 
         var player;

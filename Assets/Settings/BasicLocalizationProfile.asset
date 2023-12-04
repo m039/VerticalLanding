@@ -83,6 +83,14 @@ MonoBehaviour:
         \u0438\u043B\u0438 \u043A\u043B\u0430\u0432\u0438\u0448\u0430\u043C\u0438
         W, A, D."
     guid: 4c9ffdf5-734a-4007-805a-94c9e7b0a54f
+  - key: adv_title
+    phrases:
+    - language: {fileID: 4335363787502728690}
+      text: Advertisement Will Start In
+    - language: {fileID: 2860243989106666138}
+      text: "\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u043D\u0430\u0447\u043D\u0435\u0442\u0441\u044F
+        \u0447\u0435\u0440\u0435\u0437"
+    guid: 97bc16f2-be13-42d9-ab11-0dc87cfb604c
   mainAsset: 1
   references:
     version: 2

@@ -19,6 +19,8 @@ namespace VL
 
         public LevelCompletionScreen levelCompletetionScreenPrefab;
 
+        public AdvScreen advScreenPrefab;
+
         #endregion
 
         #region SingletonScriptableObject

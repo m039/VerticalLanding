@@ -98,5 +98,18 @@ namespace VL
         {
             return string.Format(LevelFmt, level);
         }
+
+        public int NumberOfCompletedLevels()
+        {
+            var result = 0;
+
+            for (int i = 1; i <= MaxLevels; i++)
+            {
+                if (IsLevelCompleted(i))
+                    result++;
+            }
+
+            return result;
+        }
     }
 }

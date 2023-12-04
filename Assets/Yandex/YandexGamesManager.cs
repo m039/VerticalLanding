@@ -1,9 +1,10 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.Scripting;
+
+#if !UNITY_EDITOR && UNITY_WEBGL
+using System.Runtime.InteropServices;
+#endif
 
 namespace VL
 {
@@ -57,6 +58,9 @@ namespace VL
 
         [DllImport("__Internal")]
         private static extern bool IsInitializedInternal();
+
+        [DllImport("__Internal")]
+        private static extern void YG_setLeaderboardScore(string leaderboard, int number);
 #endif
 
         void Start()
@@ -156,6 +160,13 @@ namespace VL
             return IsInitializedInternal();
 #else
             return true;
+#endif
+        }
+
+        public void SetLeaderboardScore(string leaderboard, int number)
+        {
+#if !UNITY_EDITOR && UNITY_WEBGL
+            YG_setLeaderboardScore(leaderboard, number);
 #endif
         }
     }

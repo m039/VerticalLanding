@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using m039.BasicLocalization;
 using m039.Common;
 using System.Linq;
+using UnityEngine.Rendering;
 
 namespace VL
 {
@@ -248,6 +249,9 @@ namespace VL
             YandexMetrikaManager.Instance.ReachGoal(
                 $"level_{LevelSelectionManager.Instance.GetCurrentLevel()}_completed"
             );
+
+            var numberOfCompletedLevels = LevelSelectionManager.Instance.NumberOfCompletedLevels();
+            YandexGamesManager.Instance.SetLeaderboardScore("LevelsCompleted", numberOfCompletedLevels);
         }
 
         public void LoseLevel()
@@ -261,13 +265,16 @@ namespace VL
 
             IEnumerator reload()
             {
-                yield return new WaitForSeconds(3f);
-
                 if (YandexGamesManager.Instance.IsAdvReady())
                 {
-                    YandexGamesManager.Instance.ShowAdv();
+                    yield return new WaitForSecondsRealtime(1f);
+
+                    var screen = AdvScreen.Create();
+                    screen.onEnd += () => YandexGamesManager.Instance.ShowAdv();
                 } else
                 {
+                    yield return new WaitForSeconds(3f);
+
                     OnAdvClosed();
                 }
             }
