@@ -4,4 +4,4 @@ Vertical Landing is an arcade game like Moon Lander in which you control a rocke
 
 You can play the game on [Yandex Games](https://yandex.com/games/app/207896?lang=en).
 
-[![Gameplay](Docs/Gameplay.gif)]
+![Gameplay](Docs/Gameplay.gif)
