@@ -73,6 +73,12 @@ namespace VL
 
         public bool IsAdvReady()
         {
+#if !UNITY_EDITOR && UNITY_WEBGL
+            if (!YG_isSupported()) {
+                return false;
+            }
+#endif
+
             return _timeBetweenAdv < Time.realtimeSinceStartup;
         }
 
