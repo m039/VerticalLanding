@@ -138,7 +138,7 @@ PlayerSettings:
   vulkanEnableLateAcquireNextImage: 0
   vulkanEnableCommandBufferRecycling: 1
   loadStoreDebugModeEnabled: 0
-  bundleVersion: 0.2.6
+  bundleVersion: 0.2.7
   preloadedAssets:
   - {fileID: 11400000, guid: 2eaaf147c42919a47ba3da6654a5af07, type: 2}
   - {fileID: 0}
@@ -395,7 +395,8 @@ PlayerSettings:
   openGLRequireES31: 0
   openGLRequireES31AEP: 0
   openGLRequireES32: 0
-  m_TemplateCustomTags: {}
+  m_TemplateCustomTags:
+    YANDEX_METRIKA_KEY: 91834250
   mobileMTRendering:
     Android: 1
     iPhone: 1
@@ -649,7 +650,7 @@ PlayerSettings:
   webGLDebugSymbols: 0
   webGLEmscriptenArgs: 
   webGLModulesDirectory: 
-  webGLTemplate: APPLICATION:Minimal
+  webGLTemplate: PROJECT:YGDefault
   webGLAnalyzeBuildSize: 0
   webGLUseEmbeddedResources: 0
   webGLCompressionFormat: 0
