@@ -42,6 +42,9 @@ namespace VL
 
 #if !UNITY_EDITOR && UNITY_WEBGL
         [DllImport("__Internal")]
+        private static extern bool YG_isSupported();
+
+        [DllImport("__Internal")]
         private static extern void ShowAdvInternal();
 
         [DllImport("__Internal")]
@@ -75,6 +78,12 @@ namespace VL
 
         public void ShowAdv()
         {
+#if !UNITY_EDITOR && UNITY_WEBGL
+            if (!YG_isSupported()) {
+                return;
+            }
+#endif
+
             if (!IsAdvReady())
             {
                 return;
@@ -93,6 +102,12 @@ namespace VL
         public string GetLangCode()
         {
 #if !UNITY_EDITOR && UNITY_WEBGL
+            if (!YG_isSupported()) {
+                return null;
+            }
+#endif
+
+#if !UNITY_EDITOR && UNITY_WEBGL
             return GetLangInternal();
 #else
             return null;
@@ -103,6 +118,12 @@ namespace VL
         public void OnAdvClosed(string wasShown)
         {
 #if !UNITY_EDITOR && UNITY_WEBGL
+            if (!YG_isSupported()) {
+                return;
+            }
+#endif
+
+#if !UNITY_EDITOR && UNITY_WEBGL
             Time.timeScale = 1f;
 #endif
 
@@ -111,6 +132,12 @@ namespace VL
 
         public void UploadGameData(int[] completedLevels)
         {
+#if !UNITY_EDITOR && UNITY_WEBGL
+            if (!YG_isSupported()) {
+                return;
+            }
+#endif
+
 #if !UNITY_EDITOR && UNITY_WEBGL
             var json = JsonUtility.ToJson(new YandexGameData
             {
@@ -122,6 +149,12 @@ namespace VL
 
         public void DownloadGameData()
         {
+#if !UNITY_EDITOR && UNITY_WEBGL
+            if (!YG_isSupported()) {
+                return;
+            }
+#endif
+
 #if !UNITY_EDITOR && UNITY_WEBGL
             DownloadGameDataInternal();
 #endif
@@ -150,12 +183,24 @@ namespace VL
         public void GameReady()
         {
 #if !UNITY_EDITOR && UNITY_WEBGL
+            if (!YG_isSupported()) {
+                return;
+            }
+#endif
+
+#if !UNITY_EDITOR && UNITY_WEBGL
             GameReadyInternal();
 #endif
         }
 
         public bool IsInitialized()
         {
+#if !UNITY_EDITOR && UNITY_WEBGL
+            if (!YG_isSupported()) {
+                return true;
+            }
+#endif
+
 #if !UNITY_EDITOR && UNITY_WEBGL
             return IsInitializedInternal();
 #else
@@ -165,6 +210,12 @@ namespace VL
 
         public void SetLeaderboardScore(string leaderboard, int number)
         {
+#if !UNITY_EDITOR && UNITY_WEBGL
+            if (!YG_isSupported()) {
+                return;
+            }
+#endif
+
 #if !UNITY_EDITOR && UNITY_WEBGL
             YG_setLeaderboardScore(leaderboard, number);
 #endif

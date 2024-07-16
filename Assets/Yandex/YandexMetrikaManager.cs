@@ -9,6 +9,9 @@ public class YandexMetrikaManager : MonoBehaviour
 
 #if UNITY_WEBGL && !UNITY_EDITOR
     [DllImport("__Internal")]
+    private static extern bool YM_isSupported();
+
+    [DllImport("__Internal")]
     private static extern void YM_Hit(string str);
 
     [DllImport("__Internal")]
@@ -17,12 +20,24 @@ public class YandexMetrikaManager : MonoBehaviour
 
     public void Hit(string url) {
 #if UNITY_WEBGL && !UNITY_EDITOR
+        if (!YM_isSupported()) {
+            return;
+        }
+#endif
+
+#if UNITY_WEBGL && !UNITY_EDITOR
         YM_Hit(url);
 #endif
     }
 
     public void ReachGoal(string target)
     {
+#if UNITY_WEBGL && !UNITY_EDITOR
+        if (!YM_isSupported()) {
+            return;
+        }
+#endif
+
 #if UNITY_WEBGL && !UNITY_EDITOR
         YM_ReachGoal(target);
 #endif
